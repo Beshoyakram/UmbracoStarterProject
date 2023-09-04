@@ -4,9 +4,10 @@
 
 - Homepage(homepage slider)
   * Generic listing page [news]		[Done]
-		The generic details page Consists of :
-			• Main Data			[Done]
-			• Gallery			[Done]
+	The generic details page Consists of :
+    ** Main Data			[Done]
+    ** Gallery			[Done]
+    **
 			• Content section		[Done]
 			• Related links			[Done]
 			• Sharing Items			[Done]
