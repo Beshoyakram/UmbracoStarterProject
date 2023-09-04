@@ -41,8 +41,14 @@
 	- Remove Subscription		[Done]
 
 
-## Handled languages : [Done]
-Arabic , English , French	[Done]
-Can add other languages normally, and it should work as it is generic				[Done]
+## Handled languages : 		[Done]
+Arabic, English, French		[Done]
+Can add other languages typically, and it should work as it is generic			[Done]
 
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+## For installing npm:
+	- Please make sure to use node v14.17.0, before doing npm i
+	- this link: https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/
+ 	- nvm use v14.17.0
 
