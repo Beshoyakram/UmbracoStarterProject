@@ -1,0 +1,411 @@
+.releaseSection {
+    padding-bottom: 50px;
+
+    .genericListing__cards-loader {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .multiselect__wrapper {
+        .multiselect {
+            .multiselect__single {
+                display: unset;
+                min-height: unset !important;
+                padding: 14px 15px;
+
+                @if $direction == ltr {
+                    padding: 13.5px 15px;
+                }
+
+                font-size: 16px;
+            }
+        }
+    }
+
+    .col-md-4 {
+        margin-bottom: 65px;
+    }
+
+    .filter {
+        .searchBox {
+            margin-bottom: 50px;
+
+            &__wrapper {
+                input {
+                    background: transparent;
+                    min-width: 255px;
+                }
+
+                margin-#{$end}: 20px;
+            }
+
+            ::-webkit-input-placeholder {
+                /* Edge */
+                font-size: calc(var(--fontModifier) * 11px + (22 - 11) * ((100vw - 768px) / (1366 - 768)));
+                position: relative;
+                top: 2px;
+            }
+
+            :-ms-input-placeholder {
+                /* Internet Explorer 10-11 */
+                font-size: calc(var(--fontModifier) * 11px + (22 - 11) * ((100vw - 768px) / (1366 - 768)));
+                position: relative;
+                top: 2px;
+            }
+
+            ::placeholder {
+                font-size: 16px;
+                position: relative;
+                top: 2px;
+            }
+
+            h1 {
+                width: auto;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.custom__filter__wrapper {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+
+    & > div {
+        margin-#{$end}: 20px;
+        flex-grow: 1;
+
+        &:last-child {
+            margin-#{$end}: 0;
+        }
+    }
+
+    .multiselect__wrapper--releaseWidth {
+        // width: 160px;
+        // min-width: 160px;
+    }
+    // .datepicker__drpdown {
+    //     &--releaseWidth {
+    //         input {
+    //             width: 210px;
+    //             cursor: pointer;
+    //         }
+    //     }
+    // }
+
+    .clearFilter {
+        display: flex;
+        align-items: center;
+        color: var(--blue);
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        visibility: hidden;
+        pointer-events: none;
+
+        &.clearFilter--show {
+            visibility: visible;
+            pointer-events: unset;
+        }
+
+        span {
+            margin-#{$end}: 5px;
+        }
+
+        i {
+            display: flex;
+
+            &::before {
+                color: var(--blue);
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.customGenericTitle {
+    &.customGenericTitle--offices-style {
+        margin-bottom: 45px;
+    }
+}
+
+.genericListing__cards__groupWrapper {
+    margin-bottom: 25px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .releaseSection {
+        padding-bottom: 20px;
+
+        .filter {
+            .searchBox {
+                margin-bottom: 35px;
+
+                h1 {
+                    font-size: 13px;
+                    margin-#{$end}: 10px;
+                }
+
+                &__wrapper {
+                    margin-#{$end}: 10px;
+
+                    input {
+                        min-width: 160px;
+                        font-size: 13px;
+                        padding: 4px 11px;
+
+                        @if $direction == ltr {
+                            padding: 5.5px 11px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .col-md-4 {
+            margin-bottom: 30px;
+        }
+
+        .releaseCard__body {
+            padding: 14px 12px;
+
+            .title {
+                font-size: calc(var(--fontModifier) * 12px);
+                margin-bottom: 15px;
+            }
+
+            .date {
+                font-size: calc(var(--fontModifier) * 9px);
+                margin-bottom: 15px;
+            }
+
+            .description {
+                font-size: calc(var(--fontModifier) * 12px);
+                margin-bottom: 15px;
+            }
+
+            .readMore {
+                font-size: calc(var(--fontModifier) * 11px);
+            }
+        }
+    }
+
+    .custom__filter__wrapper {
+        display: flex;
+
+        & > div {
+            margin-#{$end}: 10px;
+
+            &:last-child {
+                margin-#{$end}: 0;
+            }
+        }
+
+        .multiselect__wrapper--releaseWidth {
+            // width: 100px;
+            // min-width: 100px;
+        }
+        // .datepicker__drpdown {
+        //     &:before {
+        //         font-size: 15px;
+        //     }
+        //     &--releaseWidth {
+        //         input {
+        //             width: 110px;
+        //             font-size: 13px;
+        //             padding: 4px 10px !important;
+        //             @if $direction == ltr {
+        //                 padding: 5.5px 10px !important;
+        //             }
+        //             padding-#{$start}: 25px !important;
+        //         }
+        //     }
+        // }
+
+        .clearFilter {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            color: var(--blue);
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+
+            span {
+                margin-#{$end}: 5px;
+            }
+
+            i {
+                display: flex;
+
+                &::before {
+                    color: var(--blue);
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:1024px) {
+    .customGenericTitle {
+        &.customGenericTitle--offices-style {
+            margin-bottom: 20px;
+        }
+    }
+
+    .genericListing__cards__groupWrapper {
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .releaseSection {
+        .row {
+            justify-content: center;
+
+            .col-md-4 {
+                &.no--padding {
+                    padding: 0 !important;
+                }
+            }
+        }
+
+        .filter {
+            .clearFilter {
+                width: auto !important;
+            }
+
+            .searchBox {
+                justify-content: space-between;
+
+                h1 {
+                    flex: unset;
+                    margin-bottom: 20px;
+                }
+            }
+
+            .searchBox__wrapper {
+                margin: 0;
+                margin-bottom: 20px;
+                min-width: calc(50% - 10px) !important;
+
+                input {
+                    max-width: unset !important;
+                    width: 100%;
+                    min-width: 200px;
+                }
+            }
+
+            .custom__filter__wrapper {
+                flex-wrap: wrap;
+                gap: 20px;
+
+                > div {
+                    margin: 0;
+                }
+                // .datepicker__drpdown {
+                //     flex: 0 0 calc(50% - 10px);
+                //     input {
+                //         width: 100% !important;
+                //     }
+                // }
+            }
+        }
+
+        .releaseCard__body {
+            padding: 20px 15px;
+            /*    .title {
+                font-size: calc(var(--fontModifier) * 12px);
+                margin-bottom: 15px;
+            }*/
+
+            .date {
+                font-size: calc(var(--fontModifier) * 13px);
+                margin-bottom: 15px;
+            }
+            /*   .description {
+                font-size: calc(var(--fontModifier) * 12px);
+                margin-bottom: 15px;
+            }
+*/
+            .readMore {
+                font-size: calc(var(--fontModifier) * 16px);
+            }
+        }
+    }
+
+    .customGenericTitle {
+        &.customGenericTitle--offices-style {
+            margin-bottom: 20px;
+        }
+    }
+
+    .genericListing__cards__groupWrapper {
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/*new desoign*/
+.releaseSection {
+    .releaseSection__filter {
+        @include define-responsive-property('margin-bottom', 84px, 84px, 20px, 33px )
+    }
+}
+
+.detailsPage {
+    &.detailsPage--newsListing {
+        .generic-card-content {
+            text-align: center;
+
+            .generic-location {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        .releaseSection {
+            .releaseSection__filter {
+                @include define-responsive-property('margin-bottom', 84px, 84px, 20px, 40PX )
+            }
+        }
+    }
+
+    &.detailsPage--with-filter {
+        .generic-banner-breadcrumb-with-img {
+            @include define-responsive-property(margin-bottom, 65px, 65px, 30px, 35px );
+        }
+    }
+}
+
+@media screen and(max-width:767px) {
+    .releaseSection {
+        .releaseSection__filter {
+            .releaseSection__filter__item {
+                margin-bottom: 7px;
+
+                &.releaseSection__filter__item--last {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+/*new design*/
+

@@ -1,0 +1,21 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@{
+    var Items = Model.HasValue("contentSectionItems")?
+    Model.Value<IEnumerable<BlockListItem>> ("contentSectionItems")?.Select(x => x.Content): null;
+    
+}
+@if (Items != null)
+{
+    <div style="border:1px solid;padding:10px;margin:10px;">
+        <u>Content Section Items:</u>
+        @foreach (var block in Items)
+        {
+            <h4>@block.Value("itemTitle")</h4>
+            <p>@block.Value("itemContent")</p>
+        }
+    </div>
+   
+}

@@ -1,0 +1,75 @@
+﻿@using System.Globalization;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using UmbracoStarterProject.Services;
+@inject INewsLetterSubscriptionService _newsLetterSubscriptionService
+@{
+    Layout = "Layout.cshtml";
+    var culture = Model.GetCultureFromDomains();
+
+    var lang = CultureInfo.CurrentCulture.Name;
+
+    var currentLang = lang.Substring(0, 2);
+    var newsSubscriptionList = _newsLetterSubscriptionService.GetSubscriptionList(lang);
+}
+
+<div style="border:1px solid;padding:10px;margin:10px">
+    <p>@Model.SiteTitle</p>
+    <sampleModule></sampleModule>
+
+    @*<GenericForm-1 class="generic-form-selector"></GenericForm-1>*@
+
+</div>
+<partial name="~/Views/Partials/Home Page/_SliderBanners.cshtml"  />
+<partial name="~/Views/Partials/_NewsLetterSubscription.cshtml" model="@newsSubscriptionList" />
+
+<script>
+    (function () {
+        'use strict';
+        window['sampleModule'] = {
+            siteTitle: "@Html.Raw(Model.SiteTitle)"
+        };
+    }());</script>
+
+
+@*<script>
+    window['GenericForm-1'] = {
+        "contactUsTitle": 'Html.Raw(contactUsTitle)',
+        "contactUsSubTitle": 'Html.Raw(contactUsSubTitle)',
+        "genericBasedPageID": '111',
+        //name
+        "FullName": 'FullName',
+        "FullNameRequired": 'FullNameRequired',
+        "FullNameMaxLength": 'FullNameMaxLength',
+        "FullNameNotCorrect": 'FullNameNotCorrect',
+        //Email
+        "EmailAddress": "EmailAddress",
+        "EmailNotCorrect": 'EmailNotCorrect',
+        "EmailRequiredIfPhonenotExist": 'EmailRequiredIfPhonenotExist',
+        //Phone
+        "Phone": "Phone",
+        "PhoneMaxAndMinLength": "PhoneMaxAndMinLength",
+        "PhoneRequiredIfEmailnotExist": "PhoneRequiredIfEmailnotExist",
+        //MessageTitle
+        "MessageTitle": "MessageTitle",
+        "MessageTitleRequired": "MessageTitleRequired",
+        "MessageTitleNotCorrect": "MessageTitleNotCorrect",
+        //Message
+        "Message": "Message",
+        "MessageRequired": "MessageRequired",
+        "MessageMaxLength": "MessageMaxLength",
+        "MessageNotCorrect": "MessageNotCorrect",
+        //Email or phone required
+        "EmailOrPhoneRequired": "EmailOrPhoneRequired",
+        //Submit Form Btn
+        "SubmitFormBtn": "SubmitFormBtn",
+        "SomethingIsWrongTitle": "SomethingIsWrongTitle",
+        "SomethingIsWrongBody": "SomethingIsWrongBody",
+        "EnterYourData": "EnterYourData",
+        "RecaptchaRequired": "RecaptchaRequired",
+        "SuccessMessage": "SuccessMessage",
+        "NationalNumbers": "NationalNumbers",
+        "RecaptchaSiteKey": "RecaptchaSiteKey"
+    };
+</script>*@

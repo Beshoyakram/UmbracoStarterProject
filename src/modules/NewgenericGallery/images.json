@@ -1,0 +1,51 @@
+[
+    {
+    "src": "https://picsum.photos/id/320/1366/768",
+    "thumb": "https://picsum.photos/id/320/1366/768",
+    "title": "a beautiful mountain view 1",
+    "description": "Photo by Facundo 1"
+    },
+    {
+    "src": "https://picsum.photos/id/310/1366/768",
+    "thumb": "https://picsum.photos/id/310/1366/768",
+    "title": "a beautiful mountain view 2",
+    "description": "Photo by Facundo 2"
+    },
+    {
+    "src": "https://picsum.photos/id/300/1366/768",
+    "thumb": "https://picsum.photos/id/300/1366/768",
+    "title": "a beautiful mountain view 3",
+    "description": "Photo by Facundo 3"
+    },
+    {
+    "src": "https://picsum.photos/id/330/1366/768",
+    "thumb": "https://picsum.photos/id/330/1366/768",
+    "title": "a beautiful mountain view 4",
+    "description": "Photo by Facundo 4"
+    },
+    {
+    "src": "https://picsum.photos/id/340/1366/768",
+    "thumb": "https://picsum.photos/id/340/1366/768",
+    "title": "a beautiful mountain view 5",
+    "description": "Photo by Facundo 5"
+    },
+    {
+    "src": "https://picsum.photos/id/350/1366/768",
+    "thumb": "https://picsum.photos/id/350/1366/768",
+    "title": "a beautiful mountain view 6",
+    "description": "Photo by Facundo 6"
+    },
+    {
+      "src": "https://www.youtube.com/embed/r6zIGXun57U",
+      "thumb": "https://picsum.photos/id/370/1366/768",
+      "title": "Video",
+      "description": "Video",
+      "autoplay": true
+    },
+    {
+    "src": "https://picsum.photos/id/360/1366/768",
+    "thumb": "https://picsum.photos/id/360/1366/768",
+    "title": "a beautiful mountain view 7",
+    "description": "Photo by Facundo 7"
+    }
+]

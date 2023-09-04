@@ -1,0 +1,70 @@
+﻿
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var culture = Model.GetCultureFromDomains();
+
+    IEnumerable<IPublishedContent> ListOfLinks = Model.Value<IEnumerable<IPublishedContent>>("relatedLinkItems") != null ?
+    Model.Value<IEnumerable<IPublishedContent>>("relatedLinkItems", culture) : null;
+    var Title = Model.Value<string>("relatedLinkTitle");
+    var hasOneItemPublished=false;
+    if(ListOfLinks != null){
+        foreach (var item in ListOfLinks)
+        {
+            if (item.IsPublished())
+            {
+                hasOneItemPublished = true;
+                break;
+
+            }
+
+        }
+    }
+}
+
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <h4>Related Links</h4>
+    @if (ListOfLinks != null && hasOneItemPublished)
+    {
+        <section class="related-links">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10">
+                        @if (!string.IsNullOrWhiteSpace(Title))
+                        {
+                            <h1 class="generic-title secondary-title-color">@Title</h1>
+                        }
+                        @foreach (var item in ListOfLinks)
+                        {
+                            if (item.IsPublished())
+                            {
+                                var ModuleName = item.AncestorOrSelf(2).Value<string>("title");
+                                var Name = item.Value<string>("title") != null ? item.Value<string>("title") : "";
+                                var Url = item.Url() != null ? item.Url() : "";
+                                <div class="related-links__category__single-item">
+                                    <div class="related-links__category">
+                                        <span class="related-links__category__label">@ModuleName</span>
+                                    </div>
+                                    <div class="related-links__description">
+                                        <a class="reset-anchor" href="@Url">
+                                            @Name
+                                        </a>
+                                    </div>
+                                    @* <div class="related-links__more d-none">
+                        <a href="@Url">
+                        <span class="related-links__more__label">@Umbraco.GetDictionaryValue("ReadMore")</span>
+                        <span class="icon-left-arrow"></span>
+                        </a>
+                        </div> *@
+                                </div>
+                            }
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+</div>

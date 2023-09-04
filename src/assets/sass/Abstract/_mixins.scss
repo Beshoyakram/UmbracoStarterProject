@@ -1,0 +1,181 @@
+/***Responsive Mixin***/
+
+$breakpoints: (
+    "phone": 375,
+    "phablet": 766,
+    "ipad": 1023,
+    "ipad-pro": 1024,
+    "desktop": 1366,
+    "desktop-wide": 1920,
+);
+
+@mixin mq($width, $type: max) {
+    @if map_has_key($breakpoints, $width){
+        $width: map_get($breakpoints, $width);
+    }
+
+    @if $type == max {
+        $width: $width + 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width){
+        @content;
+    }
+
+}
+
+@mixin font-size($max-font-size, $min-font-size, $max-vw, $min-vw) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+  
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        font-size: $min-font-size;
+        @media screen and (min-width: $min-vw) {
+          font-size: calc(
+            #{$min-font-size} * var(--fontModifier) + #{strip-unit(
+                $max-font-size - $min-font-size
+              )} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+          );
+        }
+        @media screen and (min-width: $max-vw) {
+          font-size: $max-font-size;
+        }
+      }
+    }
+  }
+
+
+@mixin font-family($EnglishFont,$arabicFont) {
+
+    @if $direction == ltr {
+        font-family: $EnglishFont;
+    }
+    @else {
+        font-family: $arabicFont;
+    }
+}
+
+@mixin font-size-responsive($desktop , $tablet , $mobile , $fontModifierVariable){
+  font-size: calc( var(#{$fontModifierVariable}) * #{$desktop} );
+  line-height: 1.35;
+
+  @media screen and (max-width: 1024px ) {
+    font-size: calc( var(#{$fontModifierVariable}) * #{$tablet} );
+  }
+  @media screen and (max-width: 767px ) {
+    font-size: calc( var(#{$fontModifierVariable}) * #{$mobile} );
+  }
+}
+
+
+@mixin property-responsive($desktop , $tablet , $mobile , $property){
+  #{$property}: #{$desktop};
+  @media screen and (max-width: 1024px ) {
+  #{$property}: #{$tablet};
+  }
+  @media screen and (max-width: 767px ) {
+  #{$property}: #{$mobile};
+  }
+}
+
+/*high contrast mixins starts*/
+@mixin define-high-contrast-var( $name ,  $color , $highContrast ) {
+  :root{
+      --#{$name}: #{$color};
+  }
+  .invert-color{
+      --#{$name}: #{$highContrast};
+  }
+}
+@mixin revese-horizontal-by-direction($dir) {
+  @if $direction == $dir{
+    transform: scale(-1);
+  }
+}
+@mixin flib-horizontal-by-direction($dir) {
+  @if $direction == $dir{
+    transform: scale(-1 , 1);
+  }
+}
+@mixin  apper-from-left {
+  @if $direction=='rtl' {
+    transform: translate(-200%);
+  }@else{
+    transform: translate(200%);
+
+  }
+}
+/*high contrast mixins ends*/
+@mixin add-aspect($ratio) {
+  &:before{
+      content: "";
+      display: block;
+      padding-top: ($ratio) * 100%;
+  }
+}
+@mixin add-clamp($number){
+  display: -webkit-box;
+  -webkit-line-clamp: $number;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+@mixin define-responsive-property($property , $xLarge ,  $desktop , $tablet , $mobile){
+  #{$property}: #{$xLarge};
+  @include property-max-breakPoint( $property, $desktop , 1366px );
+  @include property-max-breakPoint( $property, $tablet , 1024px );
+  @include property-max-breakPoint( $property, $mobile , 767px );
+}
+@mixin property-max-breakPoint( $property , $value , $max-screen ){
+@if($property and $value and $max-screen ){
+  @media screen and (max-width: $max-screen ) {
+      #{$property}: #{$value};
+  }
+}
+}
+@mixin property-min-breakPoint( $property , $value , $min-screen ){
+@if($property and $value and $min-screen ){
+@media screen and (min-width: $min-screen ) {
+    #{$property}: #{$value};
+}
+}
+}
+@mixin add-generic-input {
+    all: unset;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $primary;
+    @include define-responsive-property('font-size' , 20px , 20px , 14px , 16px);
+    @include define-responsive-property('line-height' , 1.65 , 1.65 , 1.785 , 1.875);
+    color: $primary;
+    box-sizing: border-box;
+    &::placeholder{
+        font-size: inherit!important;
+        line-height: inherit;
+        color: inherit;
+
+    }
+    @supports (-moz-appearance:none) {
+      @include define-responsive-property('height', calc( 1.7em + 10px) , calc( 1.7em + 10px) , calc(1.855em  + 10px), calc(1.938em + 10px) );
+      &::placeholder{
+        opacity: 1;
+    }
+  }
+}
+@mixin add-dropdown-icon{
+  &:before{
+    content: "\e909";
+    font-family: "icomoon";
+    position: absolute;
+    #{$end}: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+    pointer-events: none;
+    font-size: 1em;
+    color: inherit;
+  }
+}

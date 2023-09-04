@@ -1,0 +1,55 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Form1>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Layout.cshtml";
+
+	if (Model == null)
+		return;
+
+	var Title = Model.FormTitle;
+	var Questions = Model.QuestionsList;
+
+	int index = 1;
+}
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+	<u>Original Form:@Title</u>
+	<div class="container">
+
+		@foreach (var item in Questions)
+		{
+			var question = (Question)item.Content;
+
+			<p>@question.Head</p>
+
+			@if (question.Body.Count > 1)
+			{
+				if (question.QuestionType == "Multi Choice")
+				{
+					foreach (var answer in question.Body)
+					{
+						var ans = (Answer)answer.Content;
+
+						<label>@ans.AnwserText</label>
+						<input type="checkbox" value="@ans.AnwserText" name="AnswerOfQuestion_@index">
+					}
+				}
+				if (question.QuestionType == "One Answer")
+				{
+					foreach (var answer in question.Body)
+					{
+						var ans = (Answer)answer.Content;
+
+						<label>@ans.AnwserText</label>
+						<input type="radio" value="@ans.AnwserText" name="AnswerOfQuestion_@index">
+					}
+				}
+
+				index++;
+			}
+		}
+
+	</div>
+</div>
+

@@ -1,0 +1,739 @@
+{
+	"info": {
+		"_postman_id": "2f929b3e-b64a-407b-b29a-df051a08362a",
+		"name": "UmbracoStarterProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27076246"
+	},
+	"item": [
+		{
+			"name": "Search by lang",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44307/umbraco/api/Search/index?text=fas&culture=fr-FR",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44307",
+					"path": [
+						"umbraco",
+						"api",
+						"Search",
+						"index"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "fas"
+						},
+						{
+							"key": "culture",
+							"value": "fr-FR"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Search by  french lang",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44307/umbraco/api/Search/index?text=fas&culture=fr-FR&pageNumber=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"umbraco",
+								"api",
+								"Search",
+								"index"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "fas"
+								},
+								{
+									"key": "culture",
+									"value": "fr-FR"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Search by english lang",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44307/umbraco/api/Search/index?text=link&culture=en-US&pageNumber=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"umbraco",
+								"api",
+								"Search",
+								"index"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "link"
+								},
+								{
+									"key": "culture",
+									"value": "en-US"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Search by arabic lang",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44307/umbraco/api/Search/index?text=خبر&culture=ar-EG&pageNumber=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"umbraco",
+								"api",
+								"Search",
+								"index"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "خبر"
+								},
+								{
+									"key": "culture",
+									"value": "ar-EG"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "ContactUs",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Email",
+							"value": "beshoy@g.cc",
+							"contentType": "auto",
+							"type": "text"
+						},
+						{
+							"key": "MsgContent",
+							"value": "contentnnnn",
+							"contentType": "auto",
+							"type": "text"
+						},
+						{
+							"key": "MsgTitle",
+							"value": "conconcnoc",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "beshoy",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "Phone",
+							"value": "01545555555",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "ReCaptchaToken",
+							"value": "03ADUVZwB90_MCprmkRhboHvgkiA_dwHcgEkjzwIev_8IKRtCUW3IoQ_VCHT3mAcnXT5sq7ult5Z8X4t99P_IynQubINzvkEvWoBWAy06Ufhp0w1FDznMr7ZIiYmqA--v0LjBCkagxIM7zMTLFh93tOuSzXaHcYoVqDyD3qN9PQgKtKNsypDHy15GtJEBXcOKKTBgN2bmpyxSOwD9ozyXebk3NoJnpIzt0eEtNpsmGpZRJybqzFqwFTJ2Mlq3c2EWM-fqfcT8tdBE7oZQZk3w0XJqlZ0P3S1dWb7zSACdzWjtVgYXTJte1lPOseznaHWw6Jv6gFdOXeewbmhUYbUweSyLAkCRkrs8Gz0X2Zd1ydxoJPlG4KKI_LXt-qJTkRHB1e0QfXcJGYaRm9CrE430L4aaLpEv2FtSOrh1c1kfldpJ6iGaBqDpilcVeaJzeIdp4mN8DMZP4Ns-e-kQwStp5VULZTCbxAiBF45K5l6PWEx-GHU5wKZ0zmcs",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "contactUsId",
+							"value": "1158",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "uploadFile",
+							"type": "file",
+							"src": "/E:/pexels-ceejay-talam-11897866.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44307/umbraco/api/ContactUs/SubmitForm",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44307",
+					"path": [
+						"umbraco",
+						"api",
+						"ContactUs",
+						"SubmitForm"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "ContactUs with txt file",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Email",
+									"value": "beshoy@g.cc",
+									"contentType": "auto",
+									"type": "text"
+								},
+								{
+									"key": "MsgContent",
+									"value": "contentnnnn",
+									"contentType": "auto",
+									"type": "text"
+								},
+								{
+									"key": "MsgTitle",
+									"value": "conconcnoc",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Name",
+									"value": "beshoy",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Phone",
+									"value": "01545555555",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "ReCaptchaToken",
+									"value": "03ADUVZwB90_MCprmkRhboHvgkiA_dwHcgEkjzwIev_8IKRtCUW3IoQ_VCHT3mAcnXT5sq7ult5Z8X4t99P_IynQubINzvkEvWoBWAy06Ufhp0w1FDznMr7ZIiYmqA--v0LjBCkagxIM7zMTLFh93tOuSzXaHcYoVqDyD3qN9PQgKtKNsypDHy15GtJEBXcOKKTBgN2bmpyxSOwD9ozyXebk3NoJnpIzt0eEtNpsmGpZRJybqzFqwFTJ2Mlq3c2EWM-fqfcT8tdBE7oZQZk3w0XJqlZ0P3S1dWb7zSACdzWjtVgYXTJte1lPOseznaHWw6Jv6gFdOXeewbmhUYbUweSyLAkCRkrs8Gz0X2Zd1ydxoJPlG4KKI_LXt-qJTkRHB1e0QfXcJGYaRm9CrE430L4aaLpEv2FtSOrh1c1kfldpJ6iGaBqDpilcVeaJzeIdp4mN8DMZP4Ns-e-kQwStp5VULZTCbxAiBF45K5l6PWEx-GHU5wKZ0zmcs",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "contactUsId",
+									"value": "1167",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "uploadFile",
+									"type": "file",
+									"src": "/C:/Users/Beshoy Akram/Desktop/BodyOfAPI.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:44307/umbraco/api/ContactUs/SubmitForm",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"umbraco",
+								"api",
+								"ContactUs",
+								"SubmitForm"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "ContactUs  with docx file",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Email",
+									"value": "beshoy@g.cc",
+									"contentType": "auto",
+									"type": "text"
+								},
+								{
+									"key": "MsgContent",
+									"value": "contentnnnn",
+									"contentType": "auto",
+									"type": "text"
+								},
+								{
+									"key": "MsgTitle",
+									"value": "conconcnoc",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Name",
+									"value": "beshoy",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Phone",
+									"value": "01545555555",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "ReCaptchaToken",
+									"value": "03ADUVZwB90_MCprmkRhboHvgkiA_dwHcgEkjzwIev_8IKRtCUW3IoQ_VCHT3mAcnXT5sq7ult5Z8X4t99P_IynQubINzvkEvWoBWAy06Ufhp0w1FDznMr7ZIiYmqA--v0LjBCkagxIM7zMTLFh93tOuSzXaHcYoVqDyD3qN9PQgKtKNsypDHy15GtJEBXcOKKTBgN2bmpyxSOwD9ozyXebk3NoJnpIzt0eEtNpsmGpZRJybqzFqwFTJ2Mlq3c2EWM-fqfcT8tdBE7oZQZk3w0XJqlZ0P3S1dWb7zSACdzWjtVgYXTJte1lPOseznaHWw6Jv6gFdOXeewbmhUYbUweSyLAkCRkrs8Gz0X2Zd1ydxoJPlG4KKI_LXt-qJTkRHB1e0QfXcJGYaRm9CrE430L4aaLpEv2FtSOrh1c1kfldpJ6iGaBqDpilcVeaJzeIdp4mN8DMZP4Ns-e-kQwStp5VULZTCbxAiBF45K5l6PWEx-GHU5wKZ0zmcs",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "contactUsId",
+									"value": "1167",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "uploadFile",
+									"type": "file",
+									"src": "/C:/Users/Beshoy Akram/Desktop/New Microsoft Word Document.docx"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:44307/umbraco/api/ContactUs/SubmitForm",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"umbraco",
+								"api",
+								"ContactUs",
+								"SubmitForm"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "ContactUs with pdf file",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Email",
+									"value": "beshoy@g.cc",
+									"contentType": "auto",
+									"type": "text"
+								},
+								{
+									"key": "MsgContent",
+									"value": "contentnnnn",
+									"contentType": "auto",
+									"type": "text"
+								},
+								{
+									"key": "MsgTitle",
+									"value": "conconcnoc",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Name",
+									"value": "beshoy",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Phone",
+									"value": "01545555555",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "ReCaptchaToken",
+									"value": "03ADUVZwB90_MCprmkRhboHvgkiA_dwHcgEkjzwIev_8IKRtCUW3IoQ_VCHT3mAcnXT5sq7ult5Z8X4t99P_IynQubINzvkEvWoBWAy06Ufhp0w1FDznMr7ZIiYmqA--v0LjBCkagxIM7zMTLFh93tOuSzXaHcYoVqDyD3qN9PQgKtKNsypDHy15GtJEBXcOKKTBgN2bmpyxSOwD9ozyXebk3NoJnpIzt0eEtNpsmGpZRJybqzFqwFTJ2Mlq3c2EWM-fqfcT8tdBE7oZQZk3w0XJqlZ0P3S1dWb7zSACdzWjtVgYXTJte1lPOseznaHWw6Jv6gFdOXeewbmhUYbUweSyLAkCRkrs8Gz0X2Zd1ydxoJPlG4KKI_LXt-qJTkRHB1e0QfXcJGYaRm9CrE430L4aaLpEv2FtSOrh1c1kfldpJ6iGaBqDpilcVeaJzeIdp4mN8DMZP4Ns-e-kQwStp5VULZTCbxAiBF45K5l6PWEx-GHU5wKZ0zmcs",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "contactUsId",
+									"value": "1167",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "uploadFile",
+									"type": "file",
+									"src": "/C:/Users/Beshoy Akram/Desktop/Project features.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:44307/umbraco/api/ContactUs/SubmitForm",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"umbraco",
+								"api",
+								"ContactUs",
+								"SubmitForm"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "ContactUs  with jpg file",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Email",
+									"value": "beshoy@g.cc",
+									"contentType": "auto",
+									"type": "text"
+								},
+								{
+									"key": "MsgContent",
+									"value": "contentnnnn",
+									"contentType": "auto",
+									"type": "text"
+								},
+								{
+									"key": "MsgTitle",
+									"value": "conconcnoc",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Name",
+									"value": "beshoy",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Phone",
+									"value": "01545555555",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "ReCaptchaToken",
+									"value": "03ADUVZwB90_MCprmkRhboHvgkiA_dwHcgEkjzwIev_8IKRtCUW3IoQ_VCHT3mAcnXT5sq7ult5Z8X4t99P_IynQubINzvkEvWoBWAy06Ufhp0w1FDznMr7ZIiYmqA--v0LjBCkagxIM7zMTLFh93tOuSzXaHcYoVqDyD3qN9PQgKtKNsypDHy15GtJEBXcOKKTBgN2bmpyxSOwD9ozyXebk3NoJnpIzt0eEtNpsmGpZRJybqzFqwFTJ2Mlq3c2EWM-fqfcT8tdBE7oZQZk3w0XJqlZ0P3S1dWb7zSACdzWjtVgYXTJte1lPOseznaHWw6Jv6gFdOXeewbmhUYbUweSyLAkCRkrs8Gz0X2Zd1ydxoJPlG4KKI_LXt-qJTkRHB1e0QfXcJGYaRm9CrE430L4aaLpEv2FtSOrh1c1kfldpJ6iGaBqDpilcVeaJzeIdp4mN8DMZP4Ns-e-kQwStp5VULZTCbxAiBF45K5l6PWEx-GHU5wKZ0zmcs",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "contactUsId",
+									"value": "1167",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "uploadFile",
+									"type": "file",
+									"src": "/E:/pexels-ceejay-talam-11897866.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:44307/umbraco/api/ContactUs/SubmitForm",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"umbraco",
+								"api",
+								"ContactUs",
+								"SubmitForm"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get items in gallery",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44307/umbraco/api/Gallery/GetItemsInGallery?pageId=1144&lang=ar-EG",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44307",
+					"path": [
+						"umbraco",
+						"api",
+						"Gallery",
+						"GetItemsInGallery"
+					],
+					"query": [
+						{
+							"key": "pageId",
+							"value": "1144"
+						},
+						{
+							"key": "lang",
+							"value": "ar-EG"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get news by filter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Catogray\": 0,\r\n    \"ContentId\": \"1106\",\r\n    \"DateFrom\": \"\",\r\n    \"DateTo\": \"\",\r\n    \"IsInit\": true,\r\n    \"Lang\": \"ar-EG\",\r\n    \"PageNumber\": 1,\r\n    \"SearchText\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44307/umbraco/api/GenericListing/GetAll",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44307",
+					"path": [
+						"umbraco",
+						"api",
+						"GenericListing",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit subscription",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NewsLetterSubscriptionId\":1209,\r\n    \"EmailOfSubscription\":\"bakram@turndigital.net\",\r\n    \"culture \":\"ar-EG\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44307/umbraco/api/NewsLetterSubscription/SubmitSubscription",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44307",
+					"path": [
+						"umbraco",
+						"api",
+						"NewsLetterSubscription",
+						"SubmitSubscription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove subscription",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NewsLetterSubscriptionId\":1209,\r\n    \"EmailOfSubscription\":\"bakram@turndigital.net\",\r\n    \"culture \":\"ar-EG\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44307/umbraco/api/NewsLetterSubscription/RemoveSubscription",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44307",
+					"path": [
+						"umbraco",
+						"api",
+						"NewsLetterSubscription",
+						"RemoveSubscription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "STMPCheck",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n\"Mail\": \"apps@turndigital.net\",\r\n\"DisplayName\": \"SLA\",\r\n\"Password\": \"Vuy14703\",\r\n\"Host\": \"smtp.office365.com\",\r\n\"Port\": 587\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44307/umbraco/api/STMP/STMPChecker",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44307",
+					"path": [
+						"umbraco",
+						"api",
+						"STMP",
+						"STMPChecker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Visit sharing links",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44307/umbraco/api/Sharing/Visit?PageId=1260&LinkName=Facebock",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44307",
+					"path": [
+						"umbraco",
+						"api",
+						"Sharing",
+						"Visit"
+					],
+					"query": [
+						{
+							"key": "PageId",
+							"value": "1260"
+						},
+						{
+							"key": "LinkName",
+							"value": "Facebock"
+						},
+						{
+							"key": "Culture",
+							"value": "en-US",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

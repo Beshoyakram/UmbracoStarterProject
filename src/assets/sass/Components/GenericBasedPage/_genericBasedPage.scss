@@ -1,0 +1,115 @@
+.detailsPage--generic-component {
+  flex-wrap: nowrap;
+  socialMediaSharingMobile {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  .generic-form-selector {
+    display: block;
+    margin: 85px 0;
+    .generic-form {
+      .generic-form__content__container {
+        position: relative;
+        .init-loader {
+          .loader {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #a9a7a730;
+          }
+        }
+      }
+    }
+  }
+  .generic-banner__content--generic-component {
+    padding: 41px 0;
+  }
+  .generic-banner-breadcrumb-with-img {
+    margin-bottom: 80px;
+    .generic-banner__content {
+      .generic-banner__img-container--generic-component {
+        margin-bottom: -90px;
+      }
+    }
+  }
+  flex-wrap: nowrap;
+  .generic-form-selector {
+    display: block;
+    margin: 85px 0;
+    .generic-form {
+      .generic-form__content__container {
+        position: relative;
+        .init-loader {
+          .loader {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #a9a7a730;
+          }
+        }
+      }
+    }
+  }
+  .generic-banner__content--generic-component {
+    padding: 41px 0;
+  }
+  .generic-banner-breadcrumb-with-img {
+    margin-bottom: 80px;
+    .generic-banner__content {
+      .generic-banner__img-container--generic-component {
+        margin-bottom: -90px;
+      }
+    }
+  }
+  .generic-biography-section {
+    margin-bottom: 85px;
+  }
+  flex-wrap: nowrap;
+  .generic-form-selector {
+    display: block;
+    margin: 85px 0;
+    .generic-form {
+      .generic-form__content__container {
+        position: relative;
+        .init-loader {
+          .loader {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #a9a7a730;
+          }
+        }
+      }
+    }
+  }
+  .generic-banner__content--generic-component {
+    padding: 41px 0;
+  }
+
+  .generic-banner-breadcrumb-with-img {
+    margin-bottom: 80px;
+    .generic-banner__content {
+      .generic-banner__img-container--generic-component {
+        margin-bottom: -90px;
+      }
+    }
+  }
+  .generic-banner--img {
+    margin-bottom: 60px;
+  }
+
+  .generic-biography-section {
+    margin-bottom: 85px;
+  }
+}
+.article {
+  &.article--generic-page {
+    margin: 0 0 60px 0;
+  }
+}

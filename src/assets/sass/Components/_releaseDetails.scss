@@ -1,0 +1,244 @@
+.detailsPage {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    .blueTags {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+
+        .tag {
+            background: var(--tagBg);
+            margin-#{$end}: 25px;
+            padding: 20px 30px;
+            display: inline-flex;
+            border-radius: 40px;
+            cursor: default;
+            color: var(--readMore);
+            font-size: 20px;
+            font-size: calc( var(--fontModifier) * 12px + (20 - 12) * ((100vw - 768px) / (1366 - 768)) );
+            margin-bottom: 30px;
+
+            &:hover {
+                color: var(--readMore);
+            }
+        }
+    }
+
+    .centerImgWrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+
+        &.centerImgWrapper--inDetails {
+            &:before {
+                display: none !important;
+            }
+
+            .customImgWrapping {
+                position: unset !important;
+            }
+        }
+
+        &:before {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            content: "";
+            width: 100%;
+            padding-top: (50 / 73) * 100%;
+        }
+
+        > div {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+    }
+
+    &.pressReleaseDetails {
+        .customDate {
+            margin-bottom: 30px;
+            color: var(--tabsTitles);
+            /*font-size: calc( var(--fontModifier) * 12px + (18 - 12) * ((100vw - 768px) / (1366 - 768)) );*/
+            font-size: calc(var(--fontModifier) * 18px);
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .genericTitle {
+            &--type1 {
+                margin-bottom: 30px;
+            }
+        }
+
+        .article__text {
+            margin-bottom: 60px;
+        }
+    }
+}
+
+.detailsPage--type-two {
+    &.detailsPage {
+        &.pressReleaseDetails {
+            .genericTitle--type1 {
+                line-height: initial;
+                font-size: calc(var(--fontModifier) * 22px);
+            }
+
+            .centerImgWrapper {
+                > div {
+                    img {
+                        box-shadow: 3px 6px 9px #00000029;
+                    }
+                }
+            }
+
+            .blueTags {
+                .tag {
+                    font-size: calc(var(--fontModifier) * 20px);
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:1024px) {
+    .detailsPage--type-two {
+        &.detailsPage {
+            &.pressReleaseDetails {
+                .customDate {
+                    font-size: calc(var(--fontModifier) * 12px);
+                    margin-bottom: 20px;
+                    padding-bottom: 10px;
+                }
+
+                .genericTitle--type1 {
+                    font-size: calc(var(--fontModifier) * 14px);
+                }
+
+                .article__text {
+                    font-size: calc(var(--fontModifier) * 14px) !important;
+                    margin-bottom: 30px;
+
+                    * {
+                        font-size: calc(var(--fontModifier) * 14px) !important;
+                    }
+                }
+
+                .blueTags {
+                    margin-bottom: 0;
+
+                    .tag {
+                        font-size: calc(var(--fontModifier) * 12px);
+                        padding: 16px 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@media (max-width: 767px) {
+    .detailsPage {
+        .genericTitle {
+            &--type1 {
+                line-height: 21px;
+            }
+        }
+
+        .article__text {
+            font-size: calc(var(--fontModifier) * 14px) !important;
+        }
+
+        .blueTags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+
+            .tag {
+                margin-#{$end}: 10px;
+                padding: 10px 20px;
+                display: inline-flex;
+                border-radius: 40px;
+                cursor: default;
+                font-size: calc(var(--fontModifier) * 10px);
+                margin-bottom: 15px;
+
+                &:hover {
+                    color: var(--readMore);
+                }
+            }
+        }
+
+        &.pressReleaseDetails {
+            .customDate {
+                margin-bottom: 20px;
+                font-size: calc(var(--fontModifier) * 18px);
+            }
+
+            .genericTitle {
+                &--type1 {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .article__text {
+                margin-bottom: 50px;
+            }
+        }
+    }
+
+    .detailsPage--type-two {
+        &.detailsPage {
+            &.pressReleaseDetails {
+                .customDate {
+                    margin-bottom: 20px;
+                    padding-bottom: 10px;
+                }
+
+                .genericTitle--type1 {
+                    margin-bottom: 40px;
+                }
+
+                .centerImgWrapper {
+                    margin-bottom: 30px;
+                }
+
+                .article__text {
+                    margin-bottom: 40px;
+                }
+
+                .blueTags {
+                    margin-bottom: 15px;
+
+                    .tag {
+                        font-size: calc(var(--fontModifier) * 10px);
+                        padding: 16px 15px;
+                        margin-bottom: 15px;
+                        min-width: 60px;
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}

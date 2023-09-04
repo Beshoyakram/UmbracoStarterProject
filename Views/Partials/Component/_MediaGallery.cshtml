@@ -1,0 +1,34 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+
+    var pageId = Model.Id;
+    var culture = Model.GetCultureFromDomains();
+
+    var title = (Model.HasProperty("galleryTitle") &&
+    !string.IsNullOrWhiteSpace(Model.Value<string>("galleryTitle"))) ?
+    Html.Raw(Model.Value<string>("galleryTitle")) :
+    null;
+
+    var GalleryNumberIndex = ViewData["GalleryNumberIndex"];
+}
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <h4>Media Gallery</h4>
+    <div class="container p-0-mb">
+        <div class="row">
+            <genericGallery-@GalleryNumberIndex class="generic-gallery-selector"></genericGallery-@GalleryNumberIndex>
+        </div>
+    </div>
+</div>
+<script>
+    (function () {
+        'use strict';
+        window['genericGallery-@GalleryNumberIndex'] = {
+            "pageId": "@pageId",
+            "lang": "@culture",
+            "apiError": "apiError",
+            "mediaDictionary": "mediaDictionary",
+            "title": "@title",
+            "number": "@GalleryNumberIndex"
+        };
+    }());
+</script>

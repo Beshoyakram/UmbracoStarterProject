@@ -1,0 +1,72 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<FAqsWithTemplate>
+@using Umbraco.Cms.Core.Models.Blocks
+
+
+@{
+	Layout = "Layout.cshtml";
+
+	if (Model == null)
+		return;
+
+	var culture = Model.GetCultureFromDomains();
+
+	var ListOfFaqs = Model.Value<BlockListModel>("FaqsList") != null ?
+	Model.Value<BlockListModel>("FaqsList", culture) : null;
+	var Title = Model.Value<string>("FAQsTitle");
+
+
+	if (ListOfFaqs == null)
+		return;
+
+	var AccordionID = 1;
+}
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+	<u>FAQs Component:</u>
+
+	<p>title:@Title</p>
+	<main class="mb-4">
+		<div class="container px-4 px-lg-5">
+			@foreach (var item in ListOfFaqs)
+			{
+				var index = 0;
+				var AccordionId = "Accordion_" + AccordionID;
+				var accordion = (Accordion)item.Content;
+
+				<div class="text-center pt-5">
+					<h2>@accordion.Title</h2>
+				</div>
+				<div class="accordion" id="@AccordionId">
+
+					@foreach (var row in accordion.AccordionItems!)
+					{
+						var accordionRow = (AccordionItem)row.Content;
+						var collapseId = AccordionId + "_collapse" + index;
+
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="heading@(collapseId)">
+								<button class="accordion-button @(index == 0 ? "" :"collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(collapseId)"
+										aria-expanded=" @(index == 0 ? "true" :"false")" aria-controls="collapse@(collapseId)">
+									@accordionRow.Title
+								</button>
+							</h2>
+							<div id="collapse@(collapseId)" class="accordion-collapse collapse @(index == 0 ? "show" :null)" aria-labelledby="heading@(collapseId)"
+								 data-bs-parent="#@(AccordionId)">
+								<div class="accordion-body">
+									@accordionRow.Body
+								</div>
+							</div>
+						</div>
+
+						index++;
+
+					}
+					@{
+						AccordionID++;
+					}
+				</div>
+			}
+		</div>
+	</main>
+</div>

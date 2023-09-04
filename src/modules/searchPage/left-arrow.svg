@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52">
+  <g id="Group_1" data-name="Group 1" transform="translate(-700 -658)">
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="52" height="52" rx="26" transform="translate(700 658)" fill="rgba(0,0,0,0.35)"/>
+    <g id="Layer_2" data-name="Layer 2" transform="translate(721.14 675.503)">
+      <g id="Layer_1" data-name="Layer 1">
+        <g id="chevron_right" data-name="chevron right">
+          <path id="Vector" d="M8.6,16.986a1.128,1.128,0,0,0,.793-.325,1.1,1.1,0,0,0,0-1.568L2.706,8.479,9.392,1.866A1.1,1.1,0,0,0,9.365.325,1.131,1.131,0,0,0,7.807.3L.328,7.7a1.1,1.1,0,0,0,0,1.568l7.479,7.4a1.128,1.128,0,0,0,.793.325Z" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

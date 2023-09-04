@@ -1,0 +1,74 @@
+div {
+  .toast {
+    display: flex;
+    justify-content: space-around;
+	background-color: #333333;
+	width: 500px;
+	border-radius: 15px;
+    .icon-success,
+    .error-icon {
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @if $direction == rtl {
+		margin: 15px 20px 15px 10px;
+      } @else {
+        // padding: 10px 5px 10px 15px;
+      }
+      &::before {
+        font-size: 32px;
+      }
+    }
+    .tosater-content {
+      width: inherit;
+      padding: 10px;
+      .toast-header {
+        border: none !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: unset;
+        background-color: transparent !important;
+        @if $direction == rtl {
+          padding: 0 0 4px 10px;
+        } @else {
+          padding: 0 0 4px 0;
+        }
+        // font-weight: bold;
+        color: white;
+        font-size:14px;
+
+        .btn-close {
+          color: white;
+          outline: none;
+          box-shadow: none;
+		  background: none;
+		  background-color: transparent;
+		  padding: 0;
+		  img {
+			width: 15px;
+		  }
+          @if $direction == ltr {
+            margin: 0;
+          }
+        }
+      }
+      .toast-body {
+        color: white;
+        font-size:14px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  div {
+    &.position-fixed {
+    //   #{$end}: 1%;
+    }
+	.toast {
+		width: 350px;
+	}
+  }
+}

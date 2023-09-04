@@ -1,0 +1,156 @@
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid var(--gold);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--gold) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@include define-high-contrast-var($name :"btn-loader-color" , $color : white , $highContrast:black );
+@include define-high-contrast-var($name :"btnBgColor" , $color : #050505 , $highContrast:"#373737" );
+$btnColor :  var(--btncolor);
+$btnBgColor :  var(--btncolor);
+@mixin custom-loader($size , $colorVariableName ) {
+  .lds-ring{
+    display: inline-block;
+    position: relative;
+    width: #{$size};
+    height:  #{$size};
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border: 2px solid var(--#{$colorVariableName});
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: var(--#{$colorVariableName}) transparent transparent transparent;
+    left: 0;
+    top: 0;
+    transform: translate(10%, 10%);
+    margin: 0;
+  }
+}
+.loader-btn{
+  @include custom-loader($size:16px , $colorVariableName:"btn-loader-color")
+}
+
+
+
+
+
+/****** new Design *******/
+.lds-spinner {
+  color: official;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 6px;
+  height: 18px;
+  border-radius: 20%;
+  background: var(--gold-style-two);
+}
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(2) {
+  transform: rotate(45deg);
+  animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(3) {
+  transform: rotate(90deg);
+  animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(4) {
+  transform: rotate(140deg);
+  animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(5) {
+  transform: rotate(180deg);
+  animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(6) {
+  transform: rotate(220deg);
+  animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(7) {
+  transform: rotate(270deg);
+  animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(8) {
+  transform: rotate(310deg);
+  animation-delay: 0s;
+}
+
+// .lds-spinner div:nth-child(9) {
+//   transform: rotate(240deg);
+//   animation-delay: -0.3s;
+// }
+// .lds-spinner div:nth-child(10) {
+//   transform: rotate(270deg);
+//   animation-delay: -0.2s;
+// }
+// .lds-spinner div:nth-child(11) {
+//   transform: rotate(300deg);
+//   animation-delay: -0.1s;
+// }
+// .lds-spinner div:nth-child(12) {
+//   transform: rotate(330deg);
+//   animation-delay: 0s;
+// }
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

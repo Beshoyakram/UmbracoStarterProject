@@ -1,0 +1,131 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions
+@using Umbraco.Cms.Core.Models
+@using Umbraco.Cms.Core.Models.Blocks
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var culture = Model.GetCultureFromDomains();
+
+    var FooterModel = Model.Children.Where(x => x.ContentType.Alias == "footer").FirstOrDefault();
+    if (FooterModel == null)
+        return;
+
+    //////////////Footer Links Section///////////////////
+    var footerLinks = FooterModel.HasProperty("FooterLinks") ?
+        FooterModel.Value<BlockListModel>("FooterLinks", culture) : null;
+
+    //////////////Information Section///////////////////
+    var Emails = FooterModel.HasProperty("Email") ?
+        FooterModel.Value<string[]>("Email", culture) : null;
+
+    var HotLine = FooterModel.HasProperty("HotLine") ?
+    FooterModel.Value<string>("HotLine", culture) : null;
+
+    var Address = FooterModel.HasProperty("Address") ?
+    FooterModel.Value<string>("Address", culture) : null;
+
+    var LandLine = FooterModel.HasProperty("LandLine") ?
+    FooterModel.Value<string>("LandLine", culture) : null;
+
+
+    //////////////SocialMediaSection///////////////////
+    var SocialMediaTitle = FooterModel.HasProperty("SocialTitle") ?
+        FooterModel.Value<string>("SocialTitle", culture) : null;
+
+    var SocialMediaList = FooterModel.HasProperty("SocialMediaList") ?
+        FooterModel.Value<BlockListModel>("SocialMediaList", culture) : null;
+
+}
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <h4>Footer</h4>
+    @if (footerLinks != null)
+    {
+        foreach (var item in footerLinks)
+        {
+            var mainItemsWithSubitems = item.Content.TryConvertTo<MainItemsWithSubitems>();
+            if (mainItemsWithSubitems.Success)
+            {
+                var LinkWithSubItems = mainItemsWithSubitems.Result;
+
+                var Title = LinkWithSubItems.MainItemTitle;
+                var ItemsList = LinkWithSubItems.MainWithSubitemsList;
+                <div>
+                    <p>@Title</p>
+                    @if (ItemsList != null)
+                    {
+                        <ul>
+                            @foreach (var SubItem in ItemsList)
+                            {
+                                var MainItem = (Item)SubItem.Content;
+                                <li><a href="@MainItem.ItemLink.Url">@MainItem.Title</a></li>
+                            }
+                        </ul>
+                    }
+                </div>
+            }
+
+            var mainItem = item.Content.TryConvertTo<Item>();
+            if (mainItem.Success)
+            {
+                var mainItemResult = mainItem.Result;
+
+                <div>
+                    @if (mainItemResult.ItemLink != null)
+                    {
+                        <a href="@mainItemResult.ItemLink.Url">@mainItemResult.Title</a>
+                    }
+                </div>
+            }
+
+        }
+        <hr />
+        @if (Emails != null)
+        {
+            <div>
+                <p>Emails :</p>
+                <ul>
+                    @foreach (var item in Emails)
+                    {
+                        <li>@item</li>
+                    }
+                </ul>
+
+            </div>
+        }
+        <div>
+            <p>HotLine :@HotLine</p>
+            <p>Address :@Address</p>
+            @if (LandLine != null)
+            {
+                <p>LandLine :@LandLine</p>
+            }
+        </div>
+
+        <hr />
+
+        <div>
+            <p>@SocialMediaTitle</p>
+            @if (SocialMediaList != null)
+            {
+                @foreach (var item in SocialMediaList)
+                {
+                    var SocialItem = (SocialMedia)item.Content;
+
+                    <div class="align-text--center d-inline-block" style="border:1px solid;padding:10px;margin:10px;width:200px">
+                        <p>Title :@SocialItem.Title</p>
+                        <p>SocialName :@SocialItem.SocialName</p>
+                        <a href="@SocialItem.Link">
+                            <img src="@SocialItem.Icon.Url()" width="100%" height="100px">
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+
+    }
+</div>

@@ -1,0 +1,159 @@
+﻿.related-links {
+    margin-bottom: 50px;
+    .generic-title {
+        margin-bottom: 35px;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 33px;
+    }
+
+    .related-links__category__single-item {
+        border-bottom: 2px solid #e7e7e7;
+        margin-bottom: 25px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+
+        .related-links__category {
+            display: flex;
+            align-items: center;
+            .icon-category-icon {
+                margin-#{$end}: 9.5px;
+
+                &:before {
+                    color: var(--gold);
+                }
+            }
+
+            .related-links__category__label {
+                font-size: 16px;
+                color: #D5A419;
+                line-height: 25px;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+        }
+
+        .related-links__more {
+            display: flex;
+            align-items: center;
+
+            a {
+                text-decoration: none;
+                color: var(--copyRights-bg);
+                font-size: calc(var(--fontModifier) * 18px);
+                line-height: 24px;
+
+                span {
+                    &.related-links__more__label {
+                        margin-#{$end}: 5px;
+                    }
+
+                    &.icon-left-arrow {
+
+                        @if $direction == ltr {
+                            transform: rotate(180deg);
+                            display: inline-flex;
+                        }
+
+                        &:before {
+                            color: var(--copyRights-bg);
+                            font-size: 14px;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+        }
+
+        .related-links__description {
+            color: black;
+            font-size: 16px;
+            line-height: 25px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+    }
+}
+
+
+@media(max-width:1024px) {
+    .related-links {
+        margin-bottom: 50px;
+
+        .genericTitle {
+            margin-bottom: 30px;
+        }
+
+        .related-links__category__single-item {
+            padding: 10px 0;
+            .related-links__category {
+                margin-bottom: 5px;
+
+                .icon-category-icon {
+                    margin-#{$end}: 9.5px;
+                }
+
+                .related-links__category__label {
+                    font-size: calc(var(--fontModifier) * 14px);
+                    line-height: 19px;
+                }
+            }
+
+            .related-links__more {
+
+                a {
+                    font-size: calc(var(--fontModifier) * 16px);
+                    line-height: 22px;
+
+                    span {
+                        &.related-links__more__label {
+                            margin-#{$end}: 5px;
+                        }
+
+                        &.icon-left-arrow {
+                            &:before {
+                                font-size: 14px;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .related-links__description {
+                font-size: calc(var(--fontModifier) * 14px);
+                line-height: 30px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+@media(max-width:767px) {
+    .related-links {
+        margin-bottom: 30px;
+
+        .genericTitle {
+            margin-bottom: 30px;
+        }
+
+        .related-links__category__single-item {
+
+            .related-links__category {
+
+                .icon-category-icon {
+                    &:before {
+                        font-size: 13px;
+                    }
+                }
+            }
+
+
+            .related-links__description {
+                font-size: calc(var(--fontModifier) * 16px);
+                line-height: 30px;
+            }
+        }
+    }
+}

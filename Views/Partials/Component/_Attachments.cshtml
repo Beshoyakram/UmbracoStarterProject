@@ -1,0 +1,35 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models.Blocks
+@{
+
+    if (Model == null)
+        return;
+
+
+    var culture = Model.GetCultureFromDomains();
+
+    var ListOfAttachments = Model.Value<BlockListModel>("Files") != null ?
+    Model.Value<BlockListModel>("Files", culture) : null;
+
+    var Title = Model.Value<string>("attachmentTitle");
+
+
+}
+
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <u>Attachment Component:</u>
+    <p>title:@Title</p>
+
+    @foreach (var item in ListOfAttachments)
+    {
+        var Attachment = (Attachment)item.Content;
+
+        <h4>@Attachment.Title</h4>
+        <a href="@Attachment.File.LocalCrops.Src" download>download</a>
+
+    }
+</div>
+
+

@@ -1,0 +1,122 @@
+.ministry__reference_listing {
+	.generic__title--type3 {
+		font-size: calc(var(--fontModifier) * 24px);
+		margin-bottom: 40px;
+	}
+
+	.generic-card--listing {
+		&.generic-card {
+			height: unset;
+
+            .generic-card-content__img-wrapper {
+                &.generic-card-content__img-wrapper--video{
+                    background: black;
+                }
+                #play-btn {
+                    position: absolute;
+                    background: transparent;
+                    border: none;
+					z-index:2;
+                    .icon-video {
+                        .path1,
+                        .path2 {
+                            &::before {
+                                font-size: 40px;
+                                color: white;
+                            }
+                        }
+
+						.path1 {
+							&::before {
+								opacity: 0.3;
+								color: white;
+							}
+						}
+					}
+				}
+
+				video {
+					max-width: 100%;
+					max-height: 100%;
+					position: absolute;
+				}
+			}
+		}
+
+		.generic-card-content {
+			.generic-card-content__disable-click {
+				cursor: default;
+
+				> a {
+					cursor: default;
+				}
+			}
+
+			> section {
+				margin-bottom: 30px;
+
+				.generic-card-content__title {
+					margin: 0;
+				}
+			}
+
+			.generic-card-content__img--broken {
+				box-shadow: 3px 4px 4px #00000029;
+
+				.generic-card-content__img-wrapper {
+					background-color: #ffffff;
+				}
+			}
+
+			.generic-card-content__body {
+				.generic-card-content__body-description {
+					color: #00000094;
+					margin-bottom: 15px;
+					font-size: calc(var(--fontModifier) * 20px);
+					font-weight: 400;
+					line-height: 33px;
+				}
+
+				.generic-card-content__body__fix-direction {
+					unicode-bidi: plaintext;
+				}
+
+                .generic-card-content__body-location {
+                    margin-bottom: 5px;
+                    font-size: calc(var(--fontModifier) * 20px);
+                    font-weight: 400;
+                    line-height: 30px;
+                    word-break: break-word;
+                    align-items: baseline;
+
+
+
+                    .generic-card-content__body-location__icon,
+                    .generic-card-content__body-time__icon {
+                        margin-left: 7px;
+                    }
+
+					.generic-card-content__body-time__icon {
+						font-size: 14px;
+						color: #d5a419;
+					}
+
+                    a {
+                        text-decoration: none;
+                        color: #000;
+                    }
+                }
+                .generic-card-content__body-location--trim{
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;  
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
+
+.align-text--center{
+	text-align:center;
+}

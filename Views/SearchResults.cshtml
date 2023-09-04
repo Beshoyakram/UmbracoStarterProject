@@ -1,0 +1,32 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.SearchResults>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Layout.cshtml";
+    var culture = Model.GetCultureFromDomains();
+}
+
+@*@Model.Title*@
+
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <u>Search Page:</u>
+    <searchPage></searchPage>
+</div>
+
+
+<script>
+
+    (function () {
+        'use strict';
+        window['searchPage'] = {
+            lang: "@culture",
+            SearchFor: "Search For",
+            SearchForLabelPlaceholder: "SearchForLabelPlaceholder",
+            ShowBy: "ShowBy",
+            noResultFound: "noResultFound",
+            somethingWentWrongLabel: "somethingWentWrongLabel",
+            viewMoreBtn: "viewMoreBtn"
+        };
+    }());
+</script>

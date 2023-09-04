@@ -1,0 +1,115 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using System.Globalization;
+@using Umbraco.Extensions
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+	var homePage = Umbraco.ContentAtXPath($"//{HomePage.ModelTypeAlias}").Cast<HomePage>().FirstOrDefault();
+	var logo = homePage.SiteLogo != null ? homePage.SiteLogo.Url() : "";
+}
+
+@{
+	//string lang = "";
+	//if (Model.Url().Contains("/ar/"))
+	//	lang = "ar-EG";
+	//else if (Model.Url().Contains("/en/"))
+	//	lang = "en-US";
+	//else
+	//	lang = "fr-FR";
+
+	var currentCulture = CultureInfo.CurrentCulture.Name;
+	var lang = currentCulture;
+	var currentLang = lang.Substring(0, 2);
+}
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+	<u>Header:</u>
+
+	<div style="border:1px solid;padding:10px;margin:10px;">
+		<u>Language Switcher:</u>
+		<ul class="language-swticher__list" aria-labelledby="dropdownMenuLink">
+			@foreach (var (culture, infos) in Model.Cultures)
+			{
+				<li value="@culture"><a href="@(Model.Url(culture: culture))">@culture</a></li>
+			}
+
+		</ul>
+	</div>
+	<div style="border:1px solid;padding:10px;margin:10px;">
+		<u>Navigation Menu:</u>
+		<ul>
+			@{
+				var site = Model.Root();
+				var firstLevelItems = site.Children.Where(x => x.HasProperty("showInHeader") && bool.Parse(x.Value<string>("showInHeader")));
+				if (Model.ContentType.Alias != NotFoundPage.ModelTypeAlias)
+				{
+					var itemUrl = !String.IsNullOrWhiteSpace(site.GetTemplateAlias()) ? site.Url() : "javascript:void(0)";
+					<li>
+						<a href="@itemUrl">
+							Homepage
+						</a>
+
+					</li>
+				}
+				@foreach (var firstItem in firstLevelItems)
+				{
+					var secondLevelItems = firstItem.Children.Where(x => x.HasProperty("showInHeader") && bool.Parse(x.Value<string>("showInHeader")));
+					@if (secondLevelItems.Any())
+					{
+						var firstLevelUrl = !String.IsNullOrWhiteSpace(firstItem.GetTemplateAlias()) ? firstItem.Url() : "javascript:void(0)";
+						//this means that we have second level
+						<li>
+							<a href="@firstLevelUrl">@(firstItem.Value<string>("menuTitle"))</a>
+							<ul>
+								@foreach (var secondItem in secondLevelItems)
+								{
+									var thirdLevelItems = secondItem.Children.Where(x => x.HasProperty("showInHeader") && bool.Parse(x.Value<string>("showInHeader")));
+									@if (thirdLevelItems.Any())
+									{
+										//this means that we have a third level
+										<li>
+											@*this means that we don't have a third level*@
+											@{
+												var secondItemUrl = !String.IsNullOrWhiteSpace(secondItem.GetTemplateAlias()) ? secondItem.Url() : "javascript:void(0)";
+												<a href="@secondItemUrl">@(secondItem.Value<string>("menuTitle"))</a>
+											}
+											<ul>
+												@*@if (!string.IsNullOrEmpty(secondItem.GetTemplateAlias()) && secondItem.HasProperty("showMoreInMobile"))
+							{
+							var showInMobile = !String.IsNullOrEmpty(secondItem.Value<string>("showMoreInMobile")) ? secondItem.Value("showMoreInMobile") : secondItem.Value<string>("menuTitle");
+							<li><a class="dropdown-item dropdown-item--hide-on-desktop" href="@secondItem.Url()">@showInMobile</a></li>
+							}*@
+												@foreach (var thirdItem in thirdLevelItems)
+												{
+													var thirdItemUrl = !String.IsNullOrWhiteSpace(thirdItem.GetTemplateAlias()) ? thirdItem.Url() : "javascript:void(0)";
+													var thirdItemTitle = thirdItem.Value<string>("menuTitle");
+
+												}
+											</ul>
+										</li>
+									}
+									else
+									{
+										var secondItemUrl = !String.IsNullOrWhiteSpace(secondItem.GetTemplateAlias()) ? secondItem.Url() : "javascript:void(0)";
+										<li><a href="@secondItemUrl">@(secondItem.Value<string>("menuTitle"))</a></li>
+									}
+								}
+							</ul>
+						</li>
+					}
+					else
+					{
+						//this means that we don't have second level
+						var itemUrl = !String.IsNullOrWhiteSpace(firstItem.GetTemplateAlias()) ?
+						firstItem.Url() :
+						"javascript:void(0)";
+						<li><a href="@itemUrl">@(firstItem.Value<string>("menuTitle"))</a></li>
+
+					}
+				}
+			}
+		</ul>
+	</div>
+
+
+</div>

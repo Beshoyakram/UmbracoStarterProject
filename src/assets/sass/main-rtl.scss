@@ -1,0 +1,24 @@
+@import "Directions/_rtl-direction.scss";
+@import "main.scss";
+
+
+@font-face {
+    font-family: $font-family;
+    src: url('#{$fontPath}/HelveticaNeueLTArabic-Roman/HelveticaNeueLTArabic-Roman.eot');
+    src: url('#{$fontPath}/HelveticaNeueLTArabic-Roman/HelveticaNeueLTArabic-Roman.eot?#iefix') format('embedded-opentype'),
+        url('#{$fontPath}/HelveticaNeueLTArabic-Roman/HelveticaNeueLTArabic-Roman.woff2') format('woff2'),
+        url('#{$fontPath}/HelveticaNeueLTArabic-Roman/HelveticaNeueLTArabic-Roman.woff') format('woff'),
+        url('#{$fontPath}/HelveticaNeueLTArabic-Roman/HelveticaNeueLTArabic-Roman.ttf') format('truetype'),
+        url('#{$fontPath}/HelveticaNeueLTArabic-Roman/HelveticaNeueLTArabic-Roman.svg#HelveticaNeueLTArabic-Roman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+
+/************ multiselect ****************/
+[dir="rtl"] .multiselect__tags, [dir="ltr"] .multiselect__tags {
+    // padding: 12px 8px 0 20px;
+    // padding-#{$end}: 0 !important;
+    // padding-#{$start}: 0 !important;
+}

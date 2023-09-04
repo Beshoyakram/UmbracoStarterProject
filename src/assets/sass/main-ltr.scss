@@ -1,0 +1,114 @@
+@import "Directions/_ltr-direction.scss";
+@import "main.scss";
+
+@font-face {
+  font-family: $font-family;
+  src: url("#{$fontPath}/Nekst-Regular/Nekst-Regular.eot");
+  src: url("#{$fontPath}/Nekst-Regular/Nekst-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("#{$fontPath}/Nekst-Regular/Nekst-Regular.woff2") format("woff2"),
+    url("#{$fontPath}/Nekst-Regular/Nekst-Regular.woff") format("woff"),
+    url("#{$fontPath}/Nekst-Regular/Nekst-Regular.ttf") format("truetype"),
+    url("#{$fontPath}/Nekst-Regular/Nekst-Regular.svg#Nekst-Regular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  footer {
+    .footerContainer {
+      .logoContainer__hotline__anchor i {
+        font-size: calc(var(--font-modifier) * 20px);
+        align-items: center;
+        transform: rotate(90deg);
+        position: relative;
+        top: 5px;
+      }
+    }
+    /* align-items: center; */
+  }
+  .slider-wrapper {
+    .strategicSlider {
+      .swiper-button-next,
+      .swiper-button-prev {
+        height: 97%;
+        top: 23px;
+        &::after {
+          transform: rotate(0deg) !important;
+        }
+      }
+    }
+  }
+}
+.cooperationWrapper .cooperation .searchBox__wrapper input {
+  padding: 6px 10px;
+  &::-webkit-input-placeholder {
+    top: -1px !important;
+  }
+
+  &:-ms-input-placeholder {
+    top: -1px !important;
+  }
+
+  &::placeholder {
+    top: -1px !important;
+  }
+}
+.service-detail {
+  ::placeholder {
+    position: relative;
+    top: 43% !important;
+    transform: translateY(-50%) !important;
+  }
+  :-ms-input-placeholder {
+    position: relative;
+    transform: translateY(-50%) !important;
+
+    top: 43% !important;
+  }
+  ::-webkit-input-placeholder {
+    position: relative;
+    transform: translateY(-50%) !important;
+
+    top: 43% !important;
+  }
+}
+.genericListing__filteration
+  .searchBox
+  .multiselect-wrapper__drpdown
+  .multiselect
+  .multiselect__single {
+  padding: 9.5px 15px !important;
+}
+@media (max-width: 1024px) {
+  .genericListing__filteration
+    .searchBox
+    .multiselect-wrapper__drpdown
+    .multiselect
+    .multiselect__single {
+    font-size: 13px;
+    padding: 6.6px 10px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .cooperationWrapper .cooperation .searchBox__wrapper input {
+    padding: 6px 10px;
+    &::-webkit-input-placeholder {
+      top: 0 !important;
+    }
+
+    &:-ms-input-placeholder {
+      top: 0 !important;
+    }
+
+    &::placeholder {
+      top: 0 !important;
+    }
+  }
+  .cooperationWrapper .cooperation .searchBox__wrapper > button i {
+    top: -1px;
+  }
+}

@@ -1,0 +1,425 @@
+
+
+/*generic inputs*/
+
+.generic-group-input {
+    position: relative;
+    color: $primary;
+
+    @supports (-moz-appearance:none) {
+        line-height: 1;
+    }
+
+    .generic-group-input__input {
+        padding-#{$end}: 1.25em;
+    }
+
+    button.generic-group-input__icon {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .generic-group-input__icon {
+        @include define-responsive-property("font-size", 20px, 20px, 14px, 16px);
+        line-height: 1;
+        position: absolute;
+        #{$end}: 0;
+        color: inherit;
+        display: inline-block;
+        @include define-responsive-property("top", 0.6em, 0.6em, 0.7em, 0.7em);
+        cursor: pointer;
+    }
+}
+
+.generic-input {
+    @include add-generic-input();
+}
+/*date popup*/
+.vc-popover-content-wrapper {
+    * {
+        color: var(--blue) !important;
+    }
+
+    .vc-popover-content {
+        margin: 0 !important;
+        overflow: hidden;
+        border-radius: 0;
+        /* offset-x | offset-y | blur-radius | spread-radius | color */
+        box-shadow: 0 0 5px 4px #e7e7e7;
+        border: none;
+
+        .vc-container {
+            padding-top: 20px;
+            /*month popup*/
+            .vc-popover-content-wrapper {
+                .vc-popover-content {
+                    background-color: white;
+
+                    .vc-nav-container {
+                        font-size: inherit;
+
+                        .vc-nav-header {
+                            margin-top: 10px;
+
+                            .vc-nav-title {
+                                &:hover {
+                                    background-color: transparent;
+                                }
+                            }
+
+                            .vc-nav-arrow {
+                                transform: scale(-1);
+                                border-color: black;
+                                border-radius: 0;
+                                border-width: 1px;
+                                width: 20px;
+                                height: 20px;
+                                margin-top: 6px;
+
+                                &.is-left {
+                                    .vc-svg-icon {
+                                        margin-#{$end}: 1px;
+                                    }
+                                }
+
+                                &.is-right {
+                                    .vc-svg-icon {
+                                        margin-#{$start}: 1px;
+                                    }
+                                }
+
+                                .vc-svg-icon {
+                                    width: 7px;
+                                    margin-top: -1.5px;
+                                }
+
+                                &:hover {
+                                    background-color: transparent;
+                                }
+                            }
+                        }
+
+                        .vc-nav-items {
+                            .vc-nav-item {
+                                font-size: 11px;
+                                font-weight: 300;
+
+                                &.is-active {
+                                    background-color: transparent;
+                                    border-color: $primary;
+                                    font-weight: 700;
+                                }
+
+                                &.is-current {
+                                    font-weight: 700;
+                                    border-color: var(--blue);
+                                }
+
+                                &:focus,
+                                &:focus-visible {
+                                    border-color: transparent;
+                                }
+
+                                &:hover {
+                                    background-color: transparent;
+                                    border-color: #e7e7e7;
+                                    box-shadow: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .vc-pane-container {
+                .vc-pane-layout {
+                }
+
+                .vc-pane {
+                    .vc-weeks {
+                        padding: 10px;
+
+                        .vc-weekday {
+                            font-size: 11px;
+                            font-weight: 300 !important;
+                        }
+
+                        .vc-day {
+                            .vc-day-content {
+                                font-size: 10px;
+                                font-weight: bold !important;
+
+                                &:hover {
+                                    background-color: var(--white) !important;
+                                    border: 1px solid $primary !important;
+                                }
+
+                                &.is-disabled {
+                                    opacity: 0.5;
+                                    pointer-events: none;
+                                }
+                            }
+
+                            .vc-highlights {
+                                .vc-highlight {
+                                    background-color: var(--white) !important;
+                                    border: 1px solid $primary !important;
+                                }
+                            }
+
+                            &.in-next-month {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .vc-header {
+                        .vc-title {
+                            font-size: 13px;
+                            line-height: 20px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+
+            .vc-arrows-container {
+                max-width: 80%;
+
+                @if $direction == rtl {
+                    #{$end}: 50%;
+                }
+                @else {
+                    #{$start}: 50%;
+                }
+
+                transform: translate(-50%, 0);
+                padding: 10px;
+
+                .vc-arrow {
+
+                    @if $direction == rtl {
+                        transform: rotate(180deg);
+                    }
+
+                    border: 1px solid var(--blue);
+                    border-radius: 0 !important;
+                    width: 20px;
+                    height: 20px;
+
+                    &.is-left {
+                        .vc-svg-icon {
+                            margin-#{$end}: 1px;
+                        }
+                    }
+
+                    &.is-right {
+                        .vc-svg-icon {
+                            margin-#{$start}: 1px;
+                        }
+                    }
+
+                    & .vc-svg-icon {
+                        width: 7px;
+                        margin-top: -1.5px;
+                    }
+                }
+            }
+        }
+    }
+}
+/*multi select*/
+.multiselect {
+    font-family: $font-family;
+    @include define-responsive-property("font-size", 20px, 20px, 14px, 30px);
+    @include define-responsive-property("line-height", 1.65, 1.65, 1.785, 1.785);
+    cursor: pointer;
+
+    &::before {
+        all: unset;
+    }
+
+    color: $primary;
+
+    .multiselect__single {
+        all: unset !important;
+        font-size: inherit;
+        line-height: inherit;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        text-overflow: ellipsis !important;
+        padding-#{$end}: 1em !important;
+        @include define-responsive-property('padding-bottom', 10px!important, 10px!important, 11px!important, 11px!important );
+
+        @supports (-moz-appearance:none) {
+            @include define-responsive-property('padding-bottom', 11px!important, 11px!important, 11px!important, 11px!important );
+        }
+
+        width: 100% !important;
+    }
+
+    .multiselect__tags {
+        @include add-generic-input();
+        @include add-dropdown-icon();
+        padding-bottom: 0;
+
+        &::before {
+            font-size: 12px;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .customGenericTitle {
+        font-size: calc(var(--fontModifier) * 18px);
+
+        &.customGenericTitle--topBorder::before {
+        }
+    }
+
+    .generic__title--type1 {
+        font-size: calc(var(--fontModifier) * 18px);
+    }
+}
+
+@media screen and(max-width:767px) {
+    .generic__title--type1 {
+        font-weight: bold;
+        font-size: calc(var(--fontModifier) * 24px);
+    }
+
+    .customGenericTitle {
+        font-size: calc(var(--fontModifier) * 24px);
+
+        &.customGenericTitle--topBorder::before {
+            top: -45px;
+        }
+    }
+
+    .multiselect {
+        &::before {
+        }
+
+        .multiselect__single {
+        }
+
+        .multiselect__tags {
+            &::before {
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.pointer-none {
+    pointer-events: none !important;
+}
+
+.sort-dropdown {
+    display: inline-block;
+    min-width: 180px;
+    color: black;
+    @include define-responsive-property("font-size", 18px, 18px, 16px, 16px);
+
+    .sort-dropdown__btn {
+        width: 100%;
+        padding-#{$end}: 2em;
+        cursor: pointer;
+        @include add-dropdown-icon();
+
+        &::before {
+            font-size: 10px;
+        }
+
+        .sort-dropdown__btn__layout {
+            display: flex;
+            justify-content: end;
+            gap: 30px;
+        }
+    }
+
+    .dropdown-menu {
+        background: white;
+        box-shadow: 0 0 20px 3px #e7e7e7;
+        padding: 0;
+        min-width: 100%;
+        border: none;
+        border-radius: 10px 10px 10px 10px;
+        overflow: hidden;
+        color: inherit;
+
+        .dropdown-item {
+            line-height: 1.11;
+            padding: 15px 15px;
+            color: inherit;
+
+            &.active,
+            &:focus,
+            &:active {
+                background-color: #e7e7e7;
+                color: inherit;
+            }
+
+            &.disabled {
+                opacity: 0.5;
+                color: inherit;
+            }
+        }
+    }
+}
+
+@media screen and(max-width:767px) {
+    .sort-dropdown {
+        color: $primary;
+        min-width: initial;
+
+        .sort-dropdown__btn {
+            &::before {
+            }
+
+            .sort-dropdown__btn__layout {
+                justify-content: start;
+            }
+        }
+    }
+}
+
+//This section to make swiper items take all the screen
+.section-add-overflow {
+    overflow: hidden;
+    padding-bottom: 10px;
+    width: 100%;
+
+    .swiper {
+        &.swiper-initialized {
+            overflow: unset;
+        }
+    }
+
+    .generic-gallery-wrapper {
+        overflow: unset;
+    }
+}
+
+@media(min-width:541px) {
+    .section-add-overflow {
+        overflow: hidden;
+        padding-bottom: 10px;
+        width: 100%;
+
+        &.section-remove-overflow--desktop {
+
+            .swiper {
+                &.swiper-initialized {
+                    overflow: visible !important;
+                }
+            }
+
+            .generic-gallery-wrapper {
+                overflow: hidden;
+            }
+        }
+    }
+}

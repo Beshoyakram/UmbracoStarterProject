@@ -1,0 +1,47 @@
+{ 
+    "modulesProps": {
+    "Navigation" : {
+      "propName" : "navigation" ,
+      "default" : true ,
+      "customOptions" : {
+        "disabledClass" : "swiper-button-disabled" , 
+        "hiddenClass" : "swiper-button-hidden" ,
+        "hideOnClick" : false ,
+        "lockClass" : "swiper-button-lock" , 
+        "nextEl"  : null,
+        "prevEl" : null     
+      }
+    } ,
+    "Pagination" : {
+      "propName" : "pagination" , 
+      "default" : true ,
+      "customOptions" : {
+  
+      }
+    } ,
+    "Autoplay" : {
+      "propName" : "autoplay" , 
+      "default" : true ,
+      "customOptions" : {
+  
+      }
+    }
+  },
+  "ALL_MODULES" :{
+    "Pagination" : "Pagination" , 
+    "Navigation" : "Navigation" ,
+    "Autoplay" : "Autoplay"
+  },
+ "SWIPER_PROPS_OPTIONS_VALUES" : 
+  {
+   "slidesPerView" : {
+     "auto" :  "auto"
+   } ,
+   "grid" : {
+     "fill" : {
+       "column" : "column" , 
+       "row" : "row"
+     }
+   }
+  }
+}

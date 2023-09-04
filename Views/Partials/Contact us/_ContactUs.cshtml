@@ -1,0 +1,64 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+
+@{
+
+	var pageId = Model.Id;
+	var culture = Model.GetCultureFromDomains();
+
+	var title = Html.Raw(Model.Value<string>("title"));
+
+	var ContactUsNumberIndex = ViewData["ContactUsNumberIndex"] != null ? ViewData["ContactUsNumberIndex"] : 1;
+}
+<div style="border:1px solid;padding:10px;margin:10px;">
+	<h4>Contact us</h4>
+	<div class="container p-0-mb">
+		<div class="row">
+			<GenericForm-@ContactUsNumberIndex class="generic-form-selector"></GenericForm-@ContactUsNumberIndex>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+	window['GenericForm-@ContactUsNumberIndex'] = {
+		"contactUsTitle": '@title',
+		"genericBasedPageID": '@pageId',
+		//name
+		"FullName": 'FullName',
+		"FullNameRequired": 'FullNameRequired',
+		"FullNameMaxLength": 'FullNameMaxLength',
+		"FullNameNotCorrect": 'FullNameNotCorrect',
+		//Email
+		"EmailAddress": "EmailAddress",
+		"EmailNotCorrect": 'EmailNotCorrect',
+		"EmailRequiredIfPhonenotExist": 'EmailRequiredIfPhonenotExist',
+		//Phone
+		"Phone": "Phone",
+		"PhoneMaxAndMinLength": "PhoneMaxAndMinLength",
+		"PhoneRequiredIfEmailnotExist": "PhoneRequiredIfEmailnotExist",
+		//MessageTitle
+		"MessageTitle": "MessageTitle",
+		"MessageTitleRequired": "MessageTitleRequired",
+		"MessageTitleNotCorrect": "MessageTitleNotCorrect",
+		//Message
+		"Message": "Message",
+		"MessageRequired": "MessageRequired",
+		"MessageMaxLength": "MessageMaxLength",
+		"MessageNotCorrect": "MessageNotCorrect",
+		//Email or phone required
+		"EmailOrPhoneRequired": "EmailOrPhoneRequired",
+		//Submit Form Btn
+		"SubmitFormBtn": "SubmitFormBtn",
+		"SomethingIsWrongTitle": "SomethingIsWrongTitle",
+		"SomethingIsWrongBody": "SomethingIsWrongBody",
+		"EnterYourData": "EnterYourData",
+		"RecaptchaRequired": "RecaptchaRequired",
+		"SuccessMessage": "SuccessMessage",
+		"NationalNumbers": "NationalNumbers",
+		"RecaptchaSiteKey": "@Configuration.GetSection("GoogleRecaptcha")["InvisibleVersionSecret"]"
+	};
+</script>

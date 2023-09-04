@@ -1,0 +1,84 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.GenericComponentBasedPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using UmbracoStarterProject.Services;
+@inject IGenericService genericService
+
+@{
+    Layout = "Layout.cshtml";
+    var pageId = Model.Id;
+    var culture = Model.GetCultureFromDomains();
+    var listOfContents = genericService.GetchildernOfContent(culture, pageId);
+    var mainImage = Model?.CoverImage?.GetCropUrl("defaultCrop");
+    var GalleryNumberIndex = 1;
+    var ContactUsNumberIndex = 1;
+}
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <u>Generic Details Page:</u>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div style="border:1px solid;padding:10px;margin:10px;">
+                    <h4>Title</h4>
+                    <p>@Model.Title</p>
+                </div>
+                @foreach (var content in listOfContents)
+                {
+                    @if (content.ContentType.Alias == GenericGallerySection.ModelTypeAlias)
+                    {
+                        <partial name="~/Views/Partials/Component/_MediaGallery.cshtml"
+                                 model=content
+                                 view-data='@new ViewDataDictionary(ViewData)
+                                { { "GalleryNumberIndex", GalleryNumberIndex}} ' />
+
+                        GalleryNumberIndex++;
+                    }
+                    @if (content.ContentType.Alias == GenericRelatedLinks.ModelTypeAlias)
+                    {
+                        <partial name="~/Views/Partials/Component/_RelatedLinks.cshtml"
+                                 model=content />
+
+
+                    }
+                    @if (content.ContentType.Alias == ContactUsPage.ModelTypeAlias)
+                    {
+                        <partial name="~/Views/Partials/Contact us/_ContactUs.cshtml"
+                                 model=content
+                                 view-data='@new ViewDataDictionary(ViewData)
+                                { { "ContactUsNumberIndex", ContactUsNumberIndex}} ' />
+
+                        ContactUsNumberIndex++;
+                    }
+                    @if (content.ContentType.Alias == GenericContentSection.ModelTypeAlias)
+                    {
+                        <partial name="~/Views/Partials/Component/_ContentSection.cshtml"
+                                 model=content />
+
+                    }
+                    @if (content.ContentType.Alias == ContentComponent.ModelTypeAlias)
+                    {
+                        <partial name="~/Views/Partials/Component/_ContentComponent.cshtml"
+                                 model=content />
+
+                    }
+                    @if(content.ContentType.Alias == FAqs.ModelTypeAlias)
+                    {
+                        <partial name="~/Views/Partials/Component/_FAQs.cshtml"
+                                 model=content />
+
+                    }
+                    @if(content.ContentType.Alias == Attachments.ModelTypeAlias)
+                    {
+                        <partial name="~/Views/Partials/Component/_Attachments.cshtml"
+                                 model=content />
+
+                    }
+                    
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

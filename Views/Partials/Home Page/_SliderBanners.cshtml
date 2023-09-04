@@ -1,0 +1,58 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@using Umbraco.Cms.Core.Models.Blocks;
+@{
+    var culture = Model.GetCultureFromDomains();
+
+    var Items = Model.HasValue("sliderBannerSelection") ?
+    Model.Value<IEnumerable<BlockListItem>>("sliderBannerSelection", culture)?.Select(x => x.Content) : null;
+
+}
+@if (Items != null)
+{
+    <div style="border:1px solid;padding:10px;margin:10px;">
+        <u style="display:block;">Homepage Slider:</u>
+
+        @foreach (var block in Items)
+        {
+            <div style="border:1px solid;padding:10px;margin:10px;display:inline-block;">
+                @if (block.ContentType.Alias == "externalLink")
+                {
+                    <div class="">
+                        <p style="margin:0;">ExternalLink</p>
+                        <div class=""><a class="" href="@block.Value("link")">@block.Value("title")</a></div>
+                    </div>
+
+                }
+                @if (block.ContentType.Alias == "internalLink")
+                {
+                    IEnumerable<IPublishedContent> ListOfLinks = block.Value<IEnumerable<IPublishedContent>>("link") != null ?
+                    block.Value<IEnumerable<IPublishedContent>>("link") : null;
+
+
+                    if (ListOfLinks != null)
+                    {
+                        foreach (var item in ListOfLinks)
+                        {
+                            if (item.IsPublished())
+                            {
+                                var Name = item.Value<string>("title") != null ? item.Value<string>("title") : "";
+                                var Url = item.Url() != null ? item.Url() : "";
+                                <div class="">
+                                    <p style="margin:0;">InternalLink</p>
+                                    <div class=""><a class="" href="@Url">@Name</a></div>
+                                </div>
+                            }
+                        }
+                    }
+
+
+                }
+            </div>
+
+
+
+        }
+    </div>
+
+}

@@ -1,0 +1,84 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models.Blocks
+@{
+
+	if (Model == null)
+		return;
+
+	//var MedaiItemBlockList = Model.MediaItem;
+
+	var culture = Model.GetCultureFromDomains();
+
+	var MedaiItemBlockList = Model.Value<BlockListModel>("mediaItem") != null ?
+	Model.Value<BlockListModel>("mediaItem", culture) : null;
+
+	var CTA = Model.Value<Umbraco.Cms.Core.Models.Link>("CTA") != null ?
+	Model.Value<Umbraco.Cms.Core.Models.Link>("CTA", culture) : null;
+
+	var Title = Model.Value<string>("contetnComponentTitle");
+
+}
+
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+	<u>Content Component:</u>
+	<p>title:@Title</p>
+
+	@foreach (var item in MedaiItemBlockList)
+	{
+		var media = item.Content.TryConvertTo<VideoUploader>();
+		if (media.Success)
+		{
+			var Video = media.Result;
+
+			<div class="d-flex justify-content-around">
+				<div>
+					<p>@Video.VideoDescription</p>
+					<video width="320" height="240" controls poster="@Video.VideoThumbnail.LocalCrops.Src">
+						<source src="@Video.MediaVideoUploader.LocalCrops.Src" type="video/mp4">
+					</video>
+				</div>
+			</div>
+		}
+		else
+		{
+			var media2 = item.Content.TryConvertTo<PhotoInContentComponent>();
+			if (media2.Success)
+			{
+				var Image = media2.Result;
+
+				<div class="d-flex justify-content-around">
+					<div>
+						<img src="@Image.Image.LocalCrops.Src" width="300px" height="300px">
+						<p> The Position of image is : [@Image.ImagePosition]</p>
+					</div>
+				</div>
+			}
+
+			else
+			{
+				var media3 = item.Content.TryConvertTo<YouTubeVideo>();
+				if (media3.Success)
+				{
+					var youtube = media3.Result;
+
+					<div class="d-flex justify-content-around">
+						<div>
+							<a href="@youtube.YouTubeVideoLink" target="_blank">Link for Youtube</a>
+						</div>
+					</div>
+
+				}
+			}
+		}
+	}
+
+	@if (CTA != null)
+	{
+		<div class="d-flex justify-content-around">
+			<a class="btn btn-primary" href="@CTA.Url">@CTA.Name</a>
+		</div>
+	}
+</div>
+

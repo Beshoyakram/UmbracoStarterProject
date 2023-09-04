@@ -1,0 +1,10 @@
+@import "./genericBasedPage";
+@import "./orgChart";
+@import "./banner";
+@import "./contentWithImage";
+
+.detailsPage {
+    &.detailsPage--generic-component {
+        overflow: hidden;
+    }
+}

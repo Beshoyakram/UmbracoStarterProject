@@ -1,0 +1,46 @@
+﻿@using System.Globalization;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.GenericListingPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Newtonsoft.Json
+
+
+
+@{
+    Layout = "Layout.cshtml";
+    var lang = CultureInfo.CurrentCulture.Name;
+    //var lang = Model.Url().Contains("/ar/") ? "ar-EG" : Model.Url().Contains("/en/") ? "en-US" : "ar-EG";
+    var pageId = Model.Id;
+    var culture = Model.GetCultureFromDomains();
+
+
+
+}
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <u>Generic Listing Page:</u>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <genericListing></genericListing>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        'use strict';
+        window['genericListing'] = {
+            pageId: "@pageId",
+            lang: "@lang",
+            NoData: "NoData",
+            dateFromPlaceholder: "dateFromPlaceholder",
+            dateToPlaceholder: "dateToPlaceholder",
+            SearchFor: "SearchFor",
+            CategoryLabel: "CategoryLabel",
+            noResultFound: "noResultFound",
+            somethingWentWrongLabel: "somethingWentWrongLabel",
+            removeAllLabel: "removeAllLabel",
+        };
+    }());</script>

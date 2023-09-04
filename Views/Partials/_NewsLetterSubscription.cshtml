@@ -1,0 +1,30 @@
+﻿
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.NewsLetterSubscriptionList>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var title = Model.Title;
+    var pageId = Model.Id;
+
+}
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <p>@title</p>
+    <form class="subscription">
+        <div class="subscription__input-container">
+            <input type="text" class=""
+                   placeholder="Enter Email Address here" />
+        </div>
+        <label class="invalid-feedback d-block fade ">
+            Email isn't Valid
+        </label>
+        <button type="submit" class="">
+            Register Button
+        </button>
+    </form>
+</div>
+
+<script>
+    subscriptionSuccessMessage = "SubscriptionSucceedMessage";
+    subscriptionFailMessage = "SubscriptionFailMessage";
+    var subscriptionPageID = @pageId;
+</script>  
+

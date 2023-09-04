@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.GenericDetailsPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+
+    var pageTitle = Model.Title;
+    var pageId = Model.Id;
+    var pageCulture = Model.GetCultureFromDomains();
+
+
+}
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <u>Social Media Sharing:</u>
+
+    <SocialMediaSharing></SocialMediaSharing>
+</div>
+
+<script>
+    (function () {
+        'use strict';
+        window['SocialMediaSharing'] = {
+            "titleToShareOnSocial": "@pageTitle",
+            "descriptionToShareOnSocial": "",
+            "linkCopiedSuccessfully": "LinkCopiedSuccessfully",
+            "pageID": "@pageId",
+            "Culture":"@pageCulture"
+        };
+    }());
+</script>

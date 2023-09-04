@@ -1,0 +1,86 @@
+﻿@using System.Globalization;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.GenericDetailsPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Layout.cshtml";
+    //var lang = Model.Url().Contains("/ar/") ? "ar-EG" : Model.Url().Contains("/en/") ? "en-US" : "ar-EG";
+    var lang = CultureInfo.CurrentCulture.Name;
+    var pageId = Model.Id;
+    var culture = Model.GetCultureFromDomains();
+    var mainImage = Model?.CoverImage?.GetCropUrl("defaultCrop");
+    var CategoryName = Model?.Category?.Value<string>("title");
+    var GalleryNumberIndex = 1;
+}
+
+
+<div style="border:1px solid;padding:10px;margin:10px;">
+    <u>Generic Details Page:</u>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div style="border:1px solid;padding:10px;margin:10px;">
+                    <h4>Title</h4>
+                    <p>@Model.Title</p>
+                    <h4>Date</h4>
+                    <p>@Model.Date.ToString("dd MMMM yyyy")</p>
+                </div>
+                <section>
+                    @Html.Partial("~/Views/Partials/Component/_CoverImage.cshtml",new ViewDataDictionary(ViewData)
+                    {
+                    { "mainImage", mainImage }
+                    })
+                </section>
+                <section>
+                    @if (Model.GallerySection != null && Model.GallerySection.Count() > 0)
+                    {
+                        @Html.Partial("~/Views/Partials/Component/_MediaGallery.cshtml",new ViewDataDictionary(ViewData)
+                    {
+                    { "GalleryNumberIndex", GalleryNumberIndex}
+                    })
+                    }
+                </section>
+                <section>
+                    @if (Model.RelatedLinkItems != null && Model.RelatedLinkItems.Any())
+                    {
+                        @Html.Partial("~/Views/Partials/Component/_RelatedLinks.cshtml")
+                    }
+                </section>
+                <section>
+                    @if (Model.ContentSectionItems != null && Model.ContentSectionItems.Any())
+                    {
+                        @Html.Partial("~/Views/Partials/Component/_ContentSection.cshtml")
+                    }
+                </section>
+                <section>
+                    @if (Model.Files != null && Model.Files.Any())
+                    {
+                        @Html.Partial("~/Views/Partials/Component/_Attachments.cshtml")
+                    }
+                </section>
+                <section>
+                    @if (Model.FaqsList != null && Model.FaqsList.Any())
+                    {
+                        @Html.Partial("~/Views/Partials/Component/_FAQs.cshtml")
+                    }
+                </section>
+                <section>
+                    @if (Model.MediaItem != null && Model.MediaItem.Any())
+                    {
+                        @Html.Partial("~/Views/Partials/Component/_ContentComponent.cshtml")
+                    }
+                </section>
+
+                <Section>
+                    @Html.Partial("~/Views/Partials/_SocialMediaSharing.cshtml",Model)
+                </Section> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

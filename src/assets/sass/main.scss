@@ -1,0 +1,77 @@
+@import "Layout/_boostrapGrid.scss";
+
+/*Import mixins and variables*/
+@import "Abstract/_mixins.scss";
+@import "Abstract/_variables.scss";
+@import "Abstract/_reset.scss";
+@import "Abstract/generic.scss";
+
+@import "icomoon/style.scss";
+/*Import components*/
+
+@import "Components/_relatedLinks.scss";
+@import "Components/_tabs.scss";
+
+@import "Components/_loader.scss";
+@import "Components/_relatedItems.scss";
+@import "Components/_genericCards.scss";
+@import "Components/_stickyLogo.scss";
+@import "Components/_multiSelect.scss";
+@import "Components/_release.scss";
+@import "Components/_releaseDetails.scss";
+@import "Components/genericForm.scss";
+@import "Components/genericToast.scss";
+
+/*Import Modules*/
+@import "Layout/_general.scss";
+
+@import "Layout/_header.scss";
+@import "Layout/_footer.scss";
+@import "Layout/_lightBox.scss";
+
+@import "../../modules/NewgenericGallery/styles/main.scss";
+@import "../../modules/searchPage/styles/main.scss";
+@import "../../assets/sass/Components/GenericBasedPage/main.scss";
+@import "../../assets/sass/Components/listingCard.scss";
+@import "../../assets/sass/Components/genericListItem";
+@import "../../modules/sampleModule/styles/main.scss";
+
+
+
+
+
+
+body {
+  background-color: white;
+  overflow-x: hidden;
+  font-family: $font-family;
+  font-size: calc(var(--fontModifier) * 16px);
+  line-height: 1.625;
+  &.body--internet_explorer {
+    * {
+      display: none !important;
+    }
+    .ie-disclaimer {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+
+      img {
+        margin-bottom: 15px;
+      }
+
+      p {
+        /* font-weight: bold;
+                color: black;*/
+        font-size: 18px;
+      }
+
+      * {
+        display: block !important;
+      }
+    }
+  }
+}

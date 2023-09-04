@@ -1,0 +1,37 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.NotFoundPage>
+
+@{
+    var currentLang = Model.Url().Contains("/ar/") ? "ar" : Model.Url().Contains("/en/") ? "en" : "ar";
+    var homePage = Umbraco.ContentAtXPath($"//{HomePage.ModelTypeAlias}").Cast<HomePage>().FirstOrDefault();
+    var siteName = homePage.SiteTitle;
+    var favIcon = homePage.FavIcon.Url();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
+    <title>@siteName</title>
+   @*TODO , add your custom style here*@
+</head>
+
+<body dir="rtl" class="body__bootstrap4-grid" style="background-color:white;">
+    <div class="error-page">
+        <h1 class="error-page__title"> Not found page</h1>
+        <p class="error-page__status-code">
+            404
+        </p>
+        <a class="generic-oval-gold-btn" href="/@currentLang" style="">
+            Go to Homepage
+        </a>
+    </div>
+
+</body>
+</html>
+
+

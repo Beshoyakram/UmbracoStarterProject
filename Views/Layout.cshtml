@@ -1,0 +1,176 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using System.Globalization;
+@using System.Text.RegularExpressions;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models
+@using Umbraco.Cms.Core.Services
+@using Microsoft.Extensions.Configuration
+@inject ILocalizationService LocalizationService
+@inject IConfiguration Configuration
+
+@{
+    if (Context.Request.Path.Value == "/")
+    {
+        var cookieLangugae1 = Context.Request.Cookies.FirstOrDefault(x => x.Key == "cookieLanguage").Value;
+
+        var lang1 = CultureInfo.CurrentCulture.Name;
+
+
+        var currentLang1 = lang1.Substring(0, 2);
+        if (!string.IsNullOrEmpty(cookieLangugae1))
+        {
+            Context.Response.Redirect(Model.Url(culture: cookieLangugae1));
+        }
+        else
+        {
+            Context.Response.Redirect(Model.Url(culture: "ar-EG"));
+        }
+    }
+}
+
+@{
+    Layout = null;
+    string lang = CultureInfo.CurrentCulture.Name;
+
+    var currentDirection = "";
+    var cultureInfo = System.Globalization.CultureInfo.GetCultureInfo(lang);
+    System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
+    System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
+
+    //SEO Settings
+    var homePage = Umbraco.ContentAtXPath($"//{HomePage.ModelTypeAlias}").Cast<HomePage>().FirstOrDefault();
+    var siteName = !string.IsNullOrWhiteSpace(homePage.SiteTitle) ? homePage.SiteTitle : "وزارة السياحة والآثار";
+
+    var pageTilte = Model.Value<string>("pageTitle");
+    var seoTitle = (Model.HasProperty("sEOTitle") && !string.IsNullOrWhiteSpace(Model.Value<string>("sEOTitle"))) ? Model.Value<string>("sEOTitle") : pageTilte;
+
+    var siteTitle = siteName;
+
+    if (!string.IsNullOrWhiteSpace(seoTitle))
+    {
+        siteTitle += " - " + seoTitle;
+    }
+
+    var seoDescription = (Model.HasProperty("sEODescription") && !string.IsNullOrEmpty(Model.Value<string>("sEODescription"))) ? Model.Value<string>("sEODescription") :
+                            (Model.HasProperty("sectionDescription") && !string.IsNullOrEmpty(Model.Value<string>("sectionDescription"))) ? Model.Value<string>("sectionDescription") :
+                            (Model.HasProperty("sectionBrief") && !string.IsNullOrEmpty(Model.Value<string>("sectionBrief"))) ? Model.Value<string>("sectionBrief") :
+                            (Model.HasProperty("brief") && !string.IsNullOrEmpty(Model.Value<string>("brief"))) ? Model.Value<string>("sectionBrief") :
+                            pageTilte;
+
+    var seoKeywords = !string.IsNullOrEmpty(Model.Value<string>("sEOKeywords")) ? Model.Value<string>("sEOKeywords") :
+                        !string.IsNullOrEmpty(Model.Value<string>("keyWords")) ? Model.Value<string>("keyWords") : "";
+
+    var logo = homePage.SiteLogo != null ? homePage.SiteLogo.Url() : "";
+    var ogImage = Model.HasProperty("mainImage") && Model.Value<IPublishedContent>("mainImage") != null ? Model.Value<IPublishedContent>("mainImage").Url() : logo;
+    var coverImage = Model.HasProperty("coverImage") && Model.Value<IPublishedContent>("coverImage") != null ? Model.Value<IPublishedContent>("coverImage").GetCropUrl("CoverImage") : logo;
+    // For IE Handling
+    string userAgent = Context.Request.Headers["User-Agent"];
+}
+
+@functions {
+
+    public static bool IsInternetExplorer(string userAgent)
+    {
+        if (userAgent.Contains("MSIE") || userAgent.Contains("Trident"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
+    <title>@(Html.Raw(siteTitle))</title>
+
+    <meta name="title" content="@Html.Raw(seoTitle)">
+    <meta name="description" content="@seoDescription" />
+    <meta name="keywords" content="@Html.Raw(seoKeywords)">
+    <link rel="canonical" href="@Model.Url()">
+
+    <meta property="og:title" content="@Html.Raw(seoTitle)">
+    <meta property="og:description" content="@seoDescription">
+    <meta property="og:image" content="@Html.Raw(ogImage)" />
+    <meta property="og:url" content="@Model.Url()">
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="@coverImage">
+    <meta name="twitter:title" content="@Html.Raw(seoTitle)">
+    <meta name="twitter:description" content="@seoDescription">
+    <meta name="twitter:image" content="@ogImage">
+
+    <meta name="author" content="www.turndigital.net">
+    <link href="~/Assets/Vendors/aos/aos.css" rel="stylesheet" />
+    @if (homePage.FavIcon != null)
+    {
+        <link rel="icon" href="@homePage.FavIcon.Url()" type="image/png">
+    }
+    @if (lang == "ar-EG")
+    {
+        currentDirection = "rtl";
+        <link href="~/Assets/Vendors/bootstrap5/css/bootstrap.rtl.min.css" rel="stylesheet" />
+        <link href="~/dist/main-rtl.css" rel="stylesheet" />
+
+    }
+    else
+    {
+        <link href="~/Assets/Vendors/bootstrap5/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/dist/main-ltr.css" rel="stylesheet" />
+        currentDirection = "ltr";
+    }
+</head>
+
+<body dir="@currentDirection">
+
+    @if (IsInternetExplorer(userAgent))
+    {
+        <section class="ie-disclaimer">
+            <p>IE Isn't Supported</p>
+        </section>
+    }
+    else
+    {
+        <div id="snackbar">
+        </div>
+        @Html.Partial("~/Views/Partials/Layout/_Header.cshtml")
+
+        @RenderBody()
+
+        @Html.Partial("~/Views/Partials/Layout/_Footer.cshtml")
+
+
+        <script>
+
+            let currentLanguage = "@lang";
+            const jquery = undefined;
+            @*This line is used to set default culture on browser so when user reopen link without ar or EN , will be redirected to last language he was opening*@
+                document.cookie = `cookieLanguage=${currentLanguage}; path=/`;
+
+        </script>
+
+        @* Files inside scripts.min.js *@
+        @*<script src="~/Assets/Vendors/bootstrap5/js/popper.min.js"></script>
+    <script src="~/Assets/Vendors/bootstrap5/js/bootstrap.js"></script>
+    <script src="~/Assets/Vendors/aos/aos.js"></script>
+    <script src="~/Assets/Vendors/masonry/masonry.min.js"></script>
+    <script src="~/Assets/Scripts/custom.js"></script>*@
+        @* Files inside scripts.min.js *@
+
+        @* Comment script.min.js if u wanna use normal scripts not bundling + minifying  *@
+        <script src="~/Assets/Scripts/minified/scripts.min.js"></script>
+        @*<script src="~/Assets/Scripts/custom.js"></script>*@
+
+        <script src="~/js/chunk-vendors.js"></script>
+        <script src="~/js/app.js"></script>
+    }
+</body>
+</html>
+
+
+

@@ -1,0 +1,59 @@
+.generic-biography-section{
+    .generic-biography-section__img-biography-container{
+        .generic-biography-section__img-container--generic-page{
+            width: calc(25% - 15px);
+            float: right;
+            margin: 0px 21px;
+            margin-right: 0;
+            }
+        .generic-biography-section__biography-container--generic-page{
+            display: unset;
+        }
+    }
+}
+.generic-biography-section__clear{
+    clear: both;
+}
+.generic-biography-section__biography-container__content--generic-page{
+    p{
+        strong{
+            line-height: 32px;
+        }
+    }
+}
+
+@media (max-width: 1024px){
+    .generic-biography-section__biography-container__content--generic-page{
+        p{
+            strong{
+                line-height: 16px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px){
+    .generic-biography-section{
+        .generic-biography-section__img-biography-container{
+            .generic-biography-section__img-container--generic-page{
+                width: 100%;
+                float: unset;
+            }
+            .generic-biography-section__biography-container--generic-page{
+                .generic-biography-section__biography-container__content{
+                    text-align: justify;
+                    margin-top: 30px;
+
+                }
+            }
+
+        }
+    }
+    .generic-biography-section__biography-container__content--generic-page{
+        p{
+            strong{
+                line-height: 18px;
+            }
+        }
+    }
+}
