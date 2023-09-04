@@ -1,6 +1,18 @@
 # UmbracoStarterProject [Lib]
 
-Our Tree:
+## Our Tree:
+
+- Homepage(homepage slider)
+  * Generic listing page [news]		[Done]
+		The generic details page Consists of :
+			• Main Data			[Done]
+			• Gallery			[Done]
+			• Content section		[Done]
+			• Related links			[Done]
+			• Sharing Items			[Done]
+			• SEO Settings			[Done]
+- [Links](#links)
+
 1.	Homepage(homepage slider)
 	a.	Generic listing page [news]		[Done]
 		The generic details page Consists of :
