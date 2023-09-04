@@ -2,7 +2,7 @@
 
 ## Our Tree:
 
-- Homepage(homepage slider)
+1. Homepage(homepage slider)
   * Generic listing page [news]		[Done]
 		The generic details page Consists of :
 		- Main Data			[Done]
@@ -28,20 +28,20 @@
 - FAQs with template			[Done]
 - Footer				[Done]
 ---------------------------------------------------------------------
-2.	Listed Items [التصنيفات]	[Done]
-a.	Lookups
-i.	Category
-b.	Email List
-i.	EmailContent
+2. Listed Items [التصنيفات]	[Done]
+ * Lookups
+ * Category
+ * Email List
+ * EmailContent
 
 ------------------------------------------------------------------------------------
 
-3.	News Letter Subscription		[Done]
-a.	Submit Subscription		[Done]
-b.	Remove Subscription		[Done]
+3. News Letter Subscription		[Done]
+ * Submit Subscription		[Done]
+ * Remove Subscription		[Done]
 
 
-Handled languages : [Done]
+## Handled languages : [Done]
 Arabic , English , French	[Done]
 Can add other languages normally, and it should work as it is generic				[Done]
 
