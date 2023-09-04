@@ -3,7 +3,7 @@
 Our Tree:
 1.	Homepage(homepage slider)
 	a.	Generic listing page [news]		[Done]
-		Generic details page Consists of :
+		The generic details page Consists of :
 			• Main Data			[Done]
 			• Gallery			[Done]
 			• Content section		[Done]
